@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hanief Adrian – Google Ads Expert</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #fafaf8;
+    --surface: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b7280;
+    --accent: #1a6b3c;
+    --accent-light: #e8f5ee;
+    --border: #e5e7eb;
+    --sidebar-w: 260px;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── SITE HEADER ── */
+  .site-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+  .site-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-left: 28px;
+    transition: color .2s;
+  }
+  nav a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0;
+    overflow: hidden;
+  }
+  .hero img {
+    width: 100%;
+    max-height: 340px;
+    object-fit: cover;
+    display: block;
+  }
+  .hero-bio {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 28px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+  }
+  .hero-bio-bar {
+    width: 4px;
+    min-height: 60px;
+    background: var(--accent);
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .hero-bio p {
+    font-size: 0.95rem;
+    color: #374151;
+    line-height: 1.75;
+  }
+  .hero-bio strong { color: var(--text); }
+  .hero-bio a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .hero-bio a:hover { text-decoration: underline; }
+
+  /* ── LAYOUT ── */
+  .layout {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px;
+    display: grid;
+    grid-template-columns: 1fr var(--sidebar-w);
+    gap: 48px;
+    align-items: start;
+  }
+
+  /* ── POST LIST ── */
+  .post-list { display: flex; flex-direction: column; gap: 0; }
+  .post-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    cursor: pointer;
+    transition: box-shadow .2s, border-color .2s;
+  }
+  .post-card:hover {
+    box-shadow: 0 4px 24px rgba(0,0,0,.07);
+    border-color: #d1d5db;
+  }
+  .post-date {
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+  .post-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .post-card h2:hover { color: var(--accent); }
+  .post-excerpt {
+    color: #4b5563;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .read-more {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .read-more::after { content: '→'; }
+
+  /* ── SIDEBAR ── */
+  .sidebar { position: sticky; top: 72px; }
+  .sidebar-widget {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 22px 20px;
+    margin-bottom: 24px;
+  }
+  .widget-title {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    color: var(--muted);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .recent-posts-list { list-style: none; }
+  .recent-posts-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.84rem;
+    line-height: 1.4;
+  }
+  .recent-posts-list li:last-child { border-bottom: none; padding-bottom: 0; }
+  .recent-posts-list a {
+    color: var(--text);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color .2s;
+  }
+  .recent-posts-list a:hover { color: var(--accent); }
+  .about-text {
+    font-size: 0.88rem;
+    color: #4b5563;
+    margin-bottom: 14px;
+  }
+  .social-links { display: flex; gap: 10px; }
+  .social-links a {
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    transition: all .2s;
+  }
+  .social-links a:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── SINGLE POST VIEW ── */
+  #single-view { display: none; }
+  .single-layout {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px;
+    display: grid;
+    grid-template-columns: 1fr var(--sidebar-w);
+    gap: 48px;
+    align-items: start;
+  }
+  .post-full {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 36px 40px;
+  }
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    color: var(--muted);
+    cursor: pointer;
+    margin-bottom: 24px;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    transition: color .2s;
+  }
+  .back-btn:hover { color: var(--accent); }
+  .post-full .post-date { margin-bottom: 12px; }
+  .post-full h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 28px;
+    color: var(--text);
+  }
+  .post-content { color: #374151; font-size: 0.95rem; line-height: 1.8; }
+  .post-content p { margin-bottom: 16px; }
+  .post-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 28px 0 10px;
+  }
+  .post-content h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 22px 0 8px;
+  }
+  .post-content h5, .post-content h6 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 24px 0 8px;
+  }
+  .post-content ol, .post-content ul {
+    padding-left: 22px;
+    margin-bottom: 14px;
+  }
+  .post-content li { margin-bottom: 6px; }
+  .post-content strong { color: var(--text); font-weight: 600; }
+  .post-content em { font-style: italic; }
+  .post-content blockquote {
+    border-left: 3px solid var(--accent);
+    padding: 10px 18px;
+    margin: 18px 0;
+    background: var(--accent-light);
+    border-radius: 0 6px 6px 0;
+    font-size: 0.92rem;
+    color: #374151;
+  }
+  .post-content a {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+  .post-content .wa-cta {
+    display: inline-block;
+    background: #25D366;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 4px 0 12px;
+  }
+  .post-content .wa-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 6px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 28px 24px;
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 40px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 760px) {
+    .layout, .single-layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+    .hero img { max-height: 200px; }
+    .post-full { padding: 24px 20px; }
+    .post-full h1 { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="site-title" onclick="showHome()">Hanief Adrian</a>
+    <nav>
+      <a href="#" onclick="return false;">About</a>
+      <a href="#" onclick="return false;">Contact</a>
+      <a href="https://mentoringbyhanief.wordpress.com/" target="_blank">Mentoring</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HOME VIEW -->
+<div id="home-view">
+  <div class="hero">
+    <img src="https://haniefadrian.wordpress.com/wp-content/uploads/2025/10/snapedit_1761017500716-1.jpeg" alt="Hanief Adrian" onerror="this.style.display='none'">
+    <div class="hero-bio">
+      <div class="hero-bio-bar"></div>
+      <p>Hanief Adrian Adalah Seorang <strong>Google Ads Expert</strong> dan <strong>Branding Leader di CV. Widjaya Bharata Pasifik</strong> dengan lebih dari <strong>5 tahun pengalaman</strong> di digital marketing. Fokus pada strategi iklan berbasis data, optimasi konversi, dan membangun brand yang tumbuh berkelanjutan. <a href="#" onclick="return false;">Contact me</a></p>
+    </div>
+  </div>
+
+  <div class="layout">
+    <main class="post-list" id="post-list"></main>
+    <aside class="sidebar" id="sidebar-home"></aside>
+  </div>
+</div>
+
+<!-- SINGLE POST VIEW -->
+<div id="single-view">
+  <div class="single-layout">
+    <article class="post-full" id="post-full-content"></article>
+    <aside class="sidebar" id="sidebar-single"></aside>
+  </div>
+</div>
+
+<footer>
+  <p>Hanief Adrian &copy; 2025–2026 &nbsp;·&nbsp; Google Ads Expert &nbsp;·&nbsp; Dibuat dengan ❤️ menggunakan HTML</p>
+</footer>
+
+<script>
+const posts = [
+  {
+    id: 1,
+    slug: "vsa-tiktok",
+    title: "VSA (Video Shopping Ads) Tiktok Tidak Menyerap Budget?",
+    date: "March 28, 2026",
+    excerpt: "Sedikit melenceng dari topik Google Ads, kali ini saya mau sharing tentang salah satu masalah yang dialami oleh advertiser tiktok yaitu VSA tidak menyerap budget. Secara umum VSA di tiktok adalah format iklan berbasis video yang dirancang untuk meningkatkan penjualan secara langsung.",
+    content: `
+      <p>Sedikit melenceng dari topik Google Ads, kali ini saya mau sharing tentang salah satu masalah yang dialami oleh advertiser tiktok yaitu VSA tidak menyerap budget. Sebelum lanjut, kita kenali dulu fungsi VSA yang saya gunakan dikonteks ini agar bisa dapat jawaban yang relevan.</p>
+      <p>Secara umum VSA di tiktok adalah format iklan berbasis video yang dirancang untuk meningkatkan penjualan secara langsung (sponsored video dengan keranjang kuning). Tapi dalam kasus ini VSA saya gunakan sebagai alat untuk mendapatkan sebanyak mungkin traffic ke katalog saya tentunya dengan sasaran customer yang sesuai dengan target kita. Istilah yang biasa saya pakai adalah "Cache Produk", Cache Produk adalah data yang dicatat oleh mesin iklan tiktok yang berfungsi untuk kasih sinyal ke GMV agar bisa mencarikan customer yang sesuai dengan terget ROI kita. Jadi jelas disini campaign VSA saya gunakan untuk menunjang iklan GMV saya.</p>
+      <p>Lalu kembali ke masalah utama, <strong>VSA tidak menyerap budget!</strong></p>
+      <p>Ada beberapa faktor yang perlu kita tinjau, saya kan share secara singkat hal apa saja yang bisa kita lakukan jika mengalami hal diatas.</p>
+      <p><strong>Penyebab Umum : Targetting, Creative, Struktur Campaign</strong></p>
+      <h4>Audiens terlalu sempit</h4>
+      <ol>
+        <li>Apakah anda menargetkan audiens (umur, interest, dll) terlalu sempit?</li>
+        <li>Apakah niche produk anda banyak dicari?</li>
+      </ol>
+      <p>Solusi : gunakan "broad targeting" dulu di campaign VSA anda. Age/umur 18-55 th, Interest : kosong atau 1-2 saja, dan aktifkan automatic tergeting. Diawal menjalankan campaign VSA, settingan diatas sangat disarankan untuk membantu tiktok mudah mendistribusikan VSA kita.</p>
+      <h4>Creative video kurang "hook"</h4>
+      <ol>
+        <li>Apakah video terlalu jualan/Hard Selling?</li>
+        <li>Tidak ada hook menarik</li>
+        <li>Terlalu mirip iklan (bukan seperti konten)</li>
+      </ol>
+      <p>Jika iya kemungkinan efek yang dirasakan adalah CTR Rendah, lalu sistem tiktok shop akan stop distribusi VSA kita.</p>
+      <p>Solusinya : Gunakan Formula video</p>
+      <ol>
+        <li>0-3 detik hook menarik</li>
+        <li>3-10 masalah</li>
+        <li>10-20 solusi</li>
+        <li>20-30 CTA</li>
+      </ol>
+      <p>Minimal 3-5 variasi video per Ads Group.</p>
+      <h4>Kena limit policy/silent restriction</h4>
+      <p>Riset dengan pasti apakah produk anda termasuk kategori sensitif di tiktok? contoh kategori kesehatan.</p>
+      <p>Masalah umumnya ada di Copywriting dari iklan/skrip. Contoh :</p>
+      <ol>
+        <li>"menyembukan"</li>
+        <li>"obat gagal ginjal"</li>
+        <li>atau "tanpa operasi"</li>
+      </ol>
+      <p>Claim diatas sebenarnya bisa untuk dibuatkan VSA, tapi tidak jarang juga yang ditolak dan jika VSA anda approved biasanya distribusinya ditekan/dibatasi oleh tiktok.</p>
+      <p>Solusi : Ubah Wording/Copywriting misalkan dari "obat gagal ginjal" menjadi "memulihkan kesehatan ginjal". Gunakan ini untuk jenis jenis produk yang masuk kategori sensitif, usahakan pesan iklan tetap tersampaikan namun tidak dibatasi oleh sistem tiktok.</p>
+      <h4>Bid atau budget terlalu rendah</h4>
+      <p>Ini mudah, perhatikan jika hal-hal diatas sudah terpenuhi pastikan iklan anda tidak kalah lelang.</p>
+      <p>Solusi :</p>
+      <ol>
+        <li>Gunakan lowest cost tanpa bid cap</li>
+        <li>Budget minimal 50k-150k perhari/ad group</li>
+        <li>Jangan terlalu banyak ad group kecil</li>
+      </ol>
+      <h4>Learning phase tidak stabil</h4>
+      <p>Apakah anda sering edit iklan atau mengganti creative dan target secara cepat? Bisa jadi sistem reset learning dan iklan tidak sempat jalan. Sebaiknya diamkan campaign baru selama 2-3 hari dan jangan diedit jika belum ada data.</p>
+      <p>Dari beberapa masalah dan solusi diatas bisa membantu anda dalam mengevaluasi VSA anda. Hal yang perlu diperhatikan tentunya ambil keputusan berdasarkan Data/Matriks. Jangan hanya berdasarkan perkiraan/selera kita sendiri. <strong>Pesan dari saya adalah kita bukan customer dan customer bukan kita. Jadi lihatlah permintaan pasar.</strong></p>
+    `
+  },
+  {
+    id: 2,
+    slug: "fake-conversion",
+    title: "Tips Praktis Mengatasi Fake Conversion Google Search Ads",
+    date: "January 22, 2026",
+    excerpt: "Sering gak dapat kasus angka konversi di Dashboard berbeda dengan jumlah leads yang masuk ke CS? Kalau iya, kamu gak sendirian. Disini saya akan berikan tips praktis bagaimana menghatasi fake conversion di google search ads.",
+    content: `
+      <p>Sering gak dapat kasus angka konversi di Dashboard berbeda dengan jumlah leads yang masuk ke CS? Kalau iya, kamu gak sendirian. Disini saya akan berikan tips praktis bagaimana menghatasi <em>fake conversion</em> di google search ads.</p>
+      <h4>Pastikan tindakan konversi, tag manager, dan variable lain terpasang dengan tepat.</h4>
+      <p>Coba kamu cek lagi, apakah semua hal yang diperlukan untuk men-tracking tindakan konversi di google search ads sudah terpasang dengan benar? seperti tindakan konversi di menu Sasaran –&gt; Ringkasan. Kode HTML tindakan konversi sudah terpasang di &lt;head&gt; dan &lt;body&gt; Landing Page/Website. Akun penampung (Google Tag Manager) sudah terpasang dengan benar. Dan Terakhir pastikan test yang dilakukan sudah berhasil menjalankan tindakan tracking konversinya (conversion fired).</p>
+      <h4>Analisis/cek sumber Fake Conversion</h4>
+      <p>Kamu perlu tau persis dari mana sumber fake conversion tersebut. ada beberapa cara untuk melakukannya:</p>
+      <ol>
+        <li>Pada satu kampanye, bukalah 1 periode dimana ditemukan gap conversi antara dashboard google ads dan CS kamu.</li>
+        <li>Cek lokasi sumber fake conversion tersebut, jika terdapat anomali (misalkan didalam satu distrik/daerah kecil terdapat konversi yg datang dengan jumlah yang banyak sekaligus). Solusinya kamu bisa kecualikan distrik/daerah kecil tersebut di pengaturan lokasi kampanye. Tapi pastikan dulu bahwa konversi yang dihasilkan dari distrik/lokasi yang dimaksud memang fake, atau leadnya tidak sampai ke CS kamu.</li>
+        <li>Dengan cara yang sama dengan nomor 2, cek juga di Demografi Audiens, Opsinya kamu bisa kecualikan demografi audiens yang secara analisamu memang menyebabkan banyaknya fake conversion.</li>
+      </ol>
+      <h4>Coba gunakan "Form" sebagai CTA</h4>
+      <p>Jika dalam kasus ini kamu menggunakan CTA hanya dengan satu kali klik tombol, misalkan tombol whatsapp. Kamu bisa mencoba A/B testing dengan LP yang sama namun menggunakan metode CTA Form. Tujuannya adalah untuk menyaring/filtering leads yang berkualitas rendah/niat beli yang rendah. Dengan adanya form, memaksa audiens untuk mengisi beberapa data terlebih dahulu sebelum akhirnya melakukan tindakan konversi. Ini akan menyaring atau setidaknya mengurangi leads dari audiens yang melakukan klik dengan asal/niat belinya rendah.</p>
+      <p>Selain itu, menggunakan form juga membantu kita untuk lebih mudah menyaring mana audiens dengan kualitas leads yang rendah dan mana yang kualitasnya tinggi. Berdasarkan dari data yang mereka masukan dan dari aksi selanjutnya apakah mereka benar-benar melakukan pembelian atau tidak. Hal ini akan membantu mesin algoritma Google dalam mengirimkan iklan ada kepada audiens dengan kualitas leads yang bagus, kamu bisa lakukan ini dengan cara setting <strong>Enhanched Conversion</strong>.</p>
+      <h4>Analisis IP Address dari Anomali Konversi/Fake Conversion kemudian lakukan Exclude IP Address</h4>
+      <p>Jika kamu mendapat laporan adanya gap conversi antara dashboard dan CS, analisis segera IP Adress pengunjung landing page kamu bisa melalui Google Analytics, atau plugin di Hosting kamu. Contoh yang saya terapkan adalah menggunakan plugin Fluent Form karena saya menggunakan WordPress. Setelah kamu mengetahui IP Adress yang melakukan boom conversion/fake conversion tindakan selanjutnya adalah melakukan exclude ip address di dashboard google ads.</p>
+      <p>Dari tips diatas harapannya dapat mengurangi jumlah fake conversion dalam kampanye kamu. Sehingga Iklan kamu bisa stabil dan menghasilkan profit yang menguntungkan!</p>
+    `
+  },
+  {
+    id: 3,
+    slug: "keyword-planner-semrush",
+    title: "Kenapa Data Keyword Planner dan SEMrush Tidak Sesuai dengan Hasil Iklan Google Ads?",
+    date: "October 23, 2025",
+    excerpt: "Pernah mengalami situasi di mana volume pencarian di Keyword Planner atau SEMrush terlihat tinggi, tapi saat kamu menjalankan kampanye iklan di Google Search, hasilnya justru sepi tayangan? Tenang, kamu tidak sendirian.",
+    content: `
+      <div class="wa-label">Belajar Google Ads Lewat WhatsApp?</div>
+      <a class="wa-cta" href="https://chat.whatsapp.com/KVIKYQdi3xs5WQk289QOKL?mode=wwt" target="_blank">Join Grup WA Sekarang!</a>
+      <p>Pernah mengalami situasi di mana <strong>volume pencarian di Keyword Planner atau SEMrush terlihat tinggi</strong>, tapi saat kamu menjalankan kampanye <strong>iklan di Google Search</strong>, hasilnya justru <em>sepi tayangan</em>?<br>Tenang, kamu tidak sendirian. Ini salah satu hal yang sering membingungkan banyak pengiklan, terutama yang baru mulai serius menganalisis data.</p>
+      <p>Yuk, kita bahas kenapa hal ini bisa terjadi.</p>
+      <h3>🔍 1. Data di Keyword Planner dan SEMrush Bukan Data Real-Time</h3>
+      <p>Kedua tools tersebut <strong>tidak menunjukkan data tayangan iklan secara langsung</strong>, melainkan hanya <strong>perkiraan rata-rata pencarian bulanan (average monthly search)</strong> dari berbagai sumber. Artinya, angka yang kamu lihat adalah <strong>estimasi total</strong>, bukan jumlah pasti dari orang yang mengetikkan kata kunci itu di Google hari ini.</p>
+      <p>Selain itu:</p>
+      <ul>
+        <li><strong>Keyword Planner</strong> mengambil data gabungan dari <em>Google Search + Search Partner</em>.</li>
+        <li><strong>SEMrush</strong> menggunakan sistem perhitungan algoritmik dari database mereka sendiri.</li>
+      </ul>
+      <p>Jadi wajar kalau angka dari kedua tools ini bisa berbeda, bahkan jauh dari kenyataan di lapangan.</p>
+      <h3>💡 2. Volume Tinggi Belum Tentu Bernilai untuk Iklan</h3>
+      <p>Banyak kata kunci yang volumenya besar ternyata memiliki <strong>tujuan pencarian informasional</strong>, bukan <strong>komersial</strong>.</p>
+      <blockquote>Kata kunci: "apa itu hepatitis B" — Volume tinggi, tapi orang yang mengetik ini belum tentu berniat membeli produk atau mencari pengobatan. Sedangkan Google Ads bekerja berdasarkan <strong>niat pengguna (user intent)</strong>. Jika niat pencarian tidak sesuai dengan tujuan iklan kamu, maka sistem menilai <strong>relevansi rendah</strong>, dan akibatnya iklan jadi jarang muncul meskipun volume terlihat besar.</blockquote>
+      <h3>⚔️ 3. Iklan Bisa Kalah di Lelang (Auction)</h3>
+      <p>Iklan yang tidak tayang bukan berarti tidak ada traffic — bisa jadi <strong>iklan kamu kalah bersaing</strong> dalam sistem lelang Google.</p>
+      <p>Beberapa penyebab umum:</p>
+      <ul>
+        <li><strong>Bid terlalu rendah</strong> dibanding pesaing</li>
+        <li><strong>Quality Score</strong> rendah (iklan dan landing page kurang relevan)</li>
+        <li><strong>Ad Rank pesaing lebih tinggi</strong></li>
+      </ul>
+      <p>Hasilnya: iklan kamu tidak masuk ke dalam <em>auction pool</em>, sehingga tayangan 0 meskipun ada pencarian.</p>
+      <h3>🎯 4. Penargetan Terlalu Sempit</h3>
+      <p>Perlu diingat juga bahwa volume pencarian di tools sering kali bersifat <strong>global atau nasional</strong>, sedangkan kampanye kamu mungkin menargetkan area yang sempit (misalnya hanya "Jabodetabek").</p>
+      <p>Faktor lain yang bisa membatasi tayangan:</p>
+      <ul>
+        <li>Lokasi dan bahasa tidak sesuai dengan sumber traffic</li>
+        <li>Jadwal tayang terlalu terbatas</li>
+        <li>Banyak <em>negative keyword</em> aktif</li>
+        <li>Pencocokan kata kunci (match type) terlalu ketat</li>
+      </ul>
+      <h3>📊 5. Google Menggabungkan Beberapa Kata Kunci Serupa</h3>
+      <p>Saat ini Google Keyword Planner <strong>mengelompokkan varian kata kunci serupa ke dalam satu volume</strong>. Contohnya: "obat herbal liver", "herbal untuk liver", "obat liver alami" — semua bisa ditampilkan dengan <strong>volume 10.000/bulan</strong>, padahal setiap varian mungkin hanya 2–3% dari total itu.</p>
+      <h3>🖥️ 6. Data SEMrush Bisa Termasuk dari Display dan Partner</h3>
+      <p>Tools pihak ketiga seperti SEMrush kadang menghitung <strong>kata kunci dari Display Network</strong> atau <strong>Search Partner</strong>, bukan hanya dari Google Search murni. Jadi, meskipun volume tinggi, bisa jadi traffic-nya justru datang dari situs partner, bukan dari halaman pencarian utama Google.</p>
+      <p>Perbedaan data antara Keyword Planner, SEMrush, dan hasil nyata di Google Ads adalah hal yang sangat umum. Kuncinya adalah <strong>memvalidasi data dengan performa kampanye kamu sendiri</strong>.</p>
+      <p>Berikut tips praktisnya:</p>
+      <ul>
+        <li>Fokus pada data nyata di akun Google Ads: <strong>CTR, Impression Share, dan Search Terms Insight.</strong></li>
+        <li>Gunakan <strong>kategori penelusuran (Search Category)</strong> untuk memahami niat pengguna sebenarnya.</li>
+        <li>Lihat tren <strong>rising search categories</strong> untuk menemukan peluang baru.</li>
+        <li>Jika traffic 0, periksa kembali <strong>bid, relevansi iklan, dan targeting.</strong></li>
+      </ul>
+      <p>Jadi, jangan langsung panik kalau volume di tools besar tapi iklanmu sepi tayangan. Anggap data dari Keyword Planner dan SEMrush sebagai <strong>panduan awal</strong>, bukan angka pasti. Data sesungguhnya selalu datang dari <strong>hasil kampanye yang sedang berjalan.</strong></p>
+      <div class="wa-label">Belajar Google Ads Lewat WhatsApp?</div>
+      <a class="wa-cta" href="https://chat.whatsapp.com/KVIKYQdi3xs5WQk289QOKL?mode=wwt" target="_blank">Join Grup WA Sekarang!</a>
+    `
+  },
+  {
+    id: 4,
+    slug: "situs-disusupi",
+    title: 'Google Ads Menolak Iklan karena "Situs Disusupi"? Begini Cara Beresinnya, Langkah demi Langkah',
+    date: "October 22, 2025",
+    excerpt: 'Kalau di halaman peninjauan Google Ads muncul keterangan "situs disusupi", artinya sistem Google mendeteksi ada malware, injeksi kode berbahaya, atau halaman/redirect mencurigakan di website-mu.',
+    content: `
+      <div class="wa-label">Belajar Google Ads Lewat WhatsApp?</div>
+      <a class="wa-cta" href="https://chat.whatsapp.com/KVIKYQdi3xs5WQk289QOKL?mode=wwt" target="_blank">Join Grup WA Sekarang!</a>
+      <p>Kalau di halaman peninjauan Google Ads muncul keterangan <strong>"situs disusupi"</strong>, artinya sistem Google mendeteksi ada <strong>malware, injeksi kode berbahaya, atau halaman/redirect mencurigakan</strong> di website-mu. Ini bukan masalah copy iklan—<strong>ini murni masalah keamanan situs</strong>. Selama masalah keamanan belum beres, Google akan <strong>menolak iklan</strong> untuk melindungi pengguna.</p>
+      <p>Kabar baiknya: masalah ini <strong>bisa diperbaiki</strong>. Ikuti panduan praktis di bawah ini.</p>
+      <h3>A. Gejala Umum "Situs Disusupi"</h3>
+      <ul>
+        <li>Pengunjung kadang diarahkan (redirect) ke situs lain (judi, porn, download mencurigakan), terutama saat datang dari mobile/Google.</li>
+        <li>Ada halaman aneh yang tidak pernah kamu buat (URL panjang, folder acak).</li>
+        <li>File tema/plugin berubah sendiri; ada file asing (contoh: wp-content/uploads/.something.php).</li>
+        <li>Kecepatan turun, penggunaan CPU hosting melonjak, atau ada email spam keluar dari server.</li>
+      </ul>
+      <h3>B. Langkah Cepat (Ringkas, lalu detail)</h3>
+      <ol>
+        <li><strong>Jeda iklan</strong> yang mengarah ke domain bermasalah (supaya budget tidak kebuang).</li>
+        <li><strong>Scan &amp; bersihkan</strong> website (malware, file asing, user tidak dikenal).</li>
+        <li><strong>Perbarui</strong> semua sistem (CMS, tema, plugin), ganti <strong>semua password</strong> dan aktifkan <strong>2FA</strong>.</li>
+        <li><strong>Amankan server</strong> (izin file, .htaccess, cron job mencurigakan, backdoor).</li>
+        <li><strong>Cek Search Console → Security issues</strong> dan bereskan semua poinnya.</li>
+        <li><strong>Ajukan peninjauan (review)</strong> di Search Console <strong>dan</strong> di Google Ads (Policy Manager).</li>
+        <li>Setelah dinyatakan aman, <strong>aktifkan kembali iklan</strong>.</li>
+      </ol>
+      <h3>C. Beresin Akar Masalahnya (Langkah Detail)</h3>
+      <h4>1. Hentikan dulu sumber trafik berbayar</h4>
+      <p><strong>Pause</strong> kampanye yang mengarah ke domain/URL terdeteksi berbahaya. Kalau harus tetap running, gunakan <strong>landing page sementara yang bersih</strong> (misal subdomain baru atau halaman sederhana di builder yang aman).</p>
+      <h4>2. Ambil bukti &amp; catatan</h4>
+      <p>Catat <strong>URL yang dicurigai</strong>, tangkapan layar, dan waktu kejadian. Ini berguna saat komunikasi dengan developer/hosting atau saat ajukan review.</p>
+      <h4>3. Scan &amp; bersihkan situs</h4>
+      <p><strong>Masuk hosting/file manager/FTP</strong>: cari file asing atau yang baru dimodifikasi aneh. Jika kamu pakai <strong>WordPress</strong>: pasang scanner keamanan (mis. Wordfence), hapus tema/plugin yang tidak dipakai, ganti semua file <strong>core WP</strong> dengan versi resmi. Periksa <strong>.htaccess</strong> (sering disusupi redirect tersembunyi). Cek <strong>cron job</strong> yang tidak dikenal.</p>
+      <h4>4. Update total &amp; ganti semua akses</h4>
+      <p>Update CMS, tema, plugin ke versi terbaru. Ganti password (hosting, cPanel, FTP/SSH, database, akun admin CMS). Hapus akun admin yang tidak dikenal. Aktifkan <strong>2FA</strong> di CMS dan email pemulihan.</p>
+      <h4>5. Amankan server &amp; konfigurasi</h4>
+      <p>Aktifkan <strong>firewall aplikasi web (WAF)</strong> dari hosting/CDN (Cloudflare, dsb.). Nonaktifkan eksekusi PHP di folder upload. Pastikan <strong>SSL/HTTPS</strong> aktif dengan benar. Matikan listing direktori. Pastikan <strong>backup</strong> rutin berjalan.</p>
+      <h4>6. Validasi lewat Google Search Console</h4>
+      <p>Tambahkan situs di <strong>Search Console</strong>. Buka menu <strong>Security Issues</strong> → lihat detail ancaman. Setelah pembersihan selesai, klik <strong>Request Review</strong> dan jelaskan singkat apa yang dibersihkan.</p>
+      <h4>7. Ajukan peninjauan di Google Ads</h4>
+      <p>Masuk <strong>Google Ads → Tools &amp; Settings → Policy Manager</strong>. Pada bagian pelanggaran "Situs disusupi", klik <strong>Request Review</strong>. Pastikan saat mengajukan review, situs sudah benar-benar bersih.</p>
+      <h4>8. Nyalakan kembali kampanye</h4>
+      <p>Setelah status aman di Search Console &amp; Google Ads, <strong>aktifkan kembali</strong> kampanye yang dipause. Pantau metrik &amp; cek ulang secara berkala (mingguan) selama beberapa minggu.</p>
+      <h3>D. Mencegah Kejadian Terulang (Checklist Pencegahan)</h3>
+      <ul>
+        <li><strong>Update rutin</strong> CMS/tema/plugin</li>
+        <li>Hapus plugin/tema yang tidak terpakai</li>
+        <li><strong>2FA</strong> untuk semua admin, password kuat &amp; unik</li>
+        <li><strong>Backup otomatis</strong> harian/mingguan + uji restore</li>
+        <li>Gunakan <strong>WAF/CDN</strong> dan batasi login (rate limit)</li>
+        <li>Audit <strong>user admin</strong> tiap bulan</li>
+        <li>Scan malware terjadwal (mingguan)</li>
+        <li>Pantau <strong>Search Console</strong> dan <strong>Policy Manager</strong> secara berkala</li>
+      </ul>
+      <h3>E. FAQ Singkat</h3>
+      <p><strong>Q: Kenapa iklan ditolak padahal halaman yang diiklankan terlihat normal?</strong><br>A: Banyak serangan bersifat <strong>kondisional</strong> (hanya muncul untuk perangkat/asal trafik tertentu). Google memindai lebih dalam, jadi bisa mendeteksi pola berbahaya meski kamu jarang melihatnya.</p>
+      <p><strong>Q: Berapa lama sampai status pulih?</strong><br>A: Setelah benar-benar bersih dan ajukan review, biasanya <strong>hitungan jam–beberapa hari kerja</strong>.</p>
+      <p><strong>Q: Apakah cukup pasang plugin keamanan saja?</strong><br>A: Plugin membantu deteksi, tapi <strong>pembersihan &amp; penguncian server</strong> tetap penting. Pastikan tidak ada <strong>backdoor</strong> yang tertinggal.</p>
+      <div class="wa-label">Belajar Google Ads Lewat WhatsApp?</div>
+      <a class="wa-cta" href="https://chat.whatsapp.com/KVIKYQdi3xs5WQk289QOKL?mode=wwt" target="_blank">Join Grup WA Sekarang!</a>
+    `
+  },
+  {
+    id: 5,
+    slug: "budget-tidak-terpakai",
+    title: "Budget 200 Ribu, tapi Spend Cuma 80 Ribu? Begini Cara Ngatasinya",
+    date: "October 21, 2025",
+    excerpt: "Kamu sudah set anggaran Rp200.000/hari, tapi yang kepakai cuma Rp80.000/hari. Tenang, ini sering terjadi. Bukan berarti 'iklan rusak', biasanya jangkauanmu sempit atau iklanmu sering kalah lelang.",
+    content: `
+      <div class="wa-label">Belajar Google Ads Lewat WhatsApp?</div>
+      <a class="wa-cta" href="https://chat.whatsapp.com/KVIKYQdi3xs5WQk289QOKL?mode=wwt" target="_blank">Join Grup WA Sekarang!</a>
+      <p>Kamu sudah set anggaran <strong>Rp200.000/hari</strong>, tapi yang kepakai cuma <strong>Rp80.000/hari</strong>. Tenang, ini sering terjadi. Bukan berarti "iklan rusak", biasanya <strong>jangkauanmu sempit</strong> atau <strong>iklanmu sering kalah lelang</strong>. Kita buka satu-satu dan bereskan langkah demi langkah.</p>
+      <h3>Mengerti Dulu: Kenapa Spend Tidak Menyentuh Budget?</h3>
+      <p>Secara sederhana, spend = (jumlah impresi yang menang) × (CTR) × (CPC). Kalau salah satu (atau semuanya) rendah, <strong>budget tidak tersentuh</strong>. Penyebab paling umum:</p>
+      <ol>
+        <li><strong>Traffic yang tersedia memang terbatas</strong> (keyword sempit, lokasi/jadwal sempit, atau low search volume).</li>
+        <li><strong>Kamu eligible tapi sering kalah lelang</strong> (Ad Rank rendah: bid/target ketat, iklan–landing kurang relevan/kuat).</li>
+        <li><strong>Filter tertutup</strong> (audiens "Targeting", negative list konflik, content exclusion, inventory type terlalu ketat).</li>
+        <li><strong>Smart Bidding terlalu ketat</strong> (tCPA/tROAS tidak realistis untuk data/market saat ini).</li>
+        <li><strong>Tumpang tindih internal</strong> (PMax/brand campaign menyedot trafik; shared budget/portfolio strategy bikin satu kampanye "makan" yang lain).</li>
+        <li><strong>Masalah status</strong> (policy/billing/review) yang diam-diam membatasi tayangan.</li>
+      </ol>
+      <h3>Checklist Diagnosa Cepat (30–60 Menit)</h3>
+      <ol>
+        <li><strong>Jadwal tayang</strong> sempit? → Buka 24/7 sementara.</li>
+        <li><strong>Lokasi &amp; bahasa</strong> terlalu sempit? → Perluas sesuai wilayah yang kamu layani.</li>
+        <li><strong>Audiens</strong> diset "Targeting"? → Ubah jadi <strong>Observation</strong> dulu.</li>
+        <li><strong>Negative keyword</strong> bentrok? → Matikan sementara daftar negatif yang besar.</li>
+        <li><strong>Ad Strength</strong> lemah? → Tambah headline/description (target: <strong>Good/Excellent</strong>).</li>
+        <li>Pakai <strong>tCPA/tROAS</strong> ketat? → Longgarkan dulu atau ganti ke <strong>Max Conversions/Max Clicks</strong> sementara.</li>
+        <li>Ada <strong>PMax/brand</strong> aktif? → Tambah <strong>brand exclusion</strong> di PMax atau pisahkan brand di kampanye Search khusus.</li>
+      </ol>
+      <h3>12 Langkah Praktis Biar Spend Naik</h3>
+      <ul>
+        <li><strong>Buka jadwal 24/7</strong> selama 3–7 hari (buat ngumpulin data).</li>
+        <li><strong>Perluas lokasi</strong> ke kota/area yang benar-benar kamu layani.</li>
+        <li><strong>Ganti audiens ke Observation</strong> (biar reach tidak ketahan).</li>
+        <li><strong>Rapikan negatif</strong>: simpan yang jelas tidak relevan, tapi jangan blokir kata niat beli (harga, beli, jasa).</li>
+        <li><strong>Tambah keyword</strong> yang niatnya jelas (phrase/broad yang masuk akal).</li>
+        <li><strong>Kuatkan RSA</strong>: minimal <strong>10–15 headline + 4–5 deskripsi</strong>.</li>
+        <li><strong>Samakan isi landing</strong> dengan janji iklan (judul/H1 sama, CTA di atas, cepat dibuka).</li>
+        <li><strong>Longgarkan bidding</strong>: tCPA → naikkan target 20–30%, atau tROAS → turunkan target 10–20%.</li>
+        <li><strong>Aktifkan Search Partners</strong> untuk ekstra jangkauan.</li>
+        <li><strong>Konsolidasi ad group</strong> yang mirip (biar datanya ngumpul, mesin cepat belajar).</li>
+        <li><strong>Pisahkan brand vs non-brand</strong> (biar non-brand tidak kelaparan tayangan).</li>
+        <li><strong>Tambah ekstensi</strong> (sitelink, callout, snippet) supaya CTR &amp; Ad Rank naik.</li>
+      </ul>
+      <h3>Tangga Aksi 7 Hari</h3>
+      <p><strong>Hari 1 – Bereskan "pembatas"</strong><br>Jadwal 24/7, lokasi diperluas, audiens → Observation. Matikan dulu shared negative list yang mencurigakan. Aktifkan Search Partners.</p>
+      <p><strong>Hari 2 – Bikin iklan lebih kuat</strong><br>Tambah aset RSA sampai <strong>Ad Strength ≥ Good</strong>. Perbaiki landing: judul sama dengan iklan, CTA jelas di atas, kompres gambar.</p>
+      <p><strong>Hari 3–4 – Bidding</strong><br>Longgarkan tCPA/tROAS <strong>atau</strong> ganti ke Max Conversions/Max Clicks. Satukan ad group yang terlalu kecil/mirip.</p>
+      <p><strong>Hari 5 – Routing trafik</strong><br>Pisahkan kampanye <strong>Brand</strong> dan <strong>Non-Brand</strong>. Jika ada PMax, pasang <strong>brand exclusion</strong>.</p>
+      <p><strong>Hari 6 – Kata kunci</strong><br>Tambah phrase/broad yang niatnya kuat. Cek <strong>Search Terms</strong>, tambahkan negatif tematik (yang benar-benar nggak relevan).</p>
+      <p><strong>Hari 7 – Stabilkan</strong><br>Kalau spend sudah mendekati 200 ribu/hari, baru <strong>kembalikan target tCPA/tROAS</strong> pelan-pelan. Mulai rapikan jadwal &amp; lokasi sesuai jam/area yang perform.</p>
+      <h3>Contoh Singkat</h3>
+      <p><strong>Masalah:</strong> Budget 200k, spend mentok 80k. Jadwal 09–17, audiens Targeting, tCPA 30k, RSA cuma 5 headline, LP lambat.</p>
+      <p><strong>Solusi:</strong> Buka 24/7, ganti ke Observation, longgarkan tCPA ke 45k (atau switch Max Conversions 5 hari), tambah 12 headline + 4 deskripsi, percepat LP, aktifkan Search Partners, gabung 3 ad group mirip.</p>
+      <p><strong>Hasil (7–10 hari):</strong> Impresi &amp; klik naik, spend 160–210k/hari, CPA stabil.</p>
+      <p>Underdelivery itu <strong>bisa dibereskan</strong>. Kuncinya: <strong>luaskan peluang tayang</strong> (jadwal/lokasi/audiens), <strong>kuatkan relevansi</strong> (RSA + landing), dan <strong>jangan terlalu ketat</strong> di awal (bidding/negatif). Begitu data sudah masuk, baru <strong>rapikan kembali</strong> dan kejar efisiensi.</p>
+      <div class="wa-label">Belajar Google Ads Lewat WhatsApp?</div>
+      <a class="wa-cta" href="https://chat.whatsapp.com/KVIKYQdi3xs5WQk289QOKL?mode=wwt" target="_blank">Join Grup WA Sekarang!</a>
+    `
+  },
+  {
+    id: 6,
+    slug: "tidak-menargetkan-relevan",
+    title: '"Tidak Menargetkan Penelusuran yang Relevan" Meski Pakai Broad? Ini Penyebab & Solusinya',
+    date: "October 21, 2025",
+    excerpt: 'Pengalaman saya dalam menangani beberapa akun, pesan seperti "tidak menargetkan penelusuran yang relevan" muncul di tab Diagnostics/Keywords. Sekilas membingungkan, apalagi kalau kita sudah menggunakan broad match dan volume pencarian tampak besar.',
+    content: `
+      <div class="wa-label">Belajar Google Ads Lewat WhatsApp?</div>
+      <a class="wa-cta" href="https://chat.whatsapp.com/KVIKYQdi3xs5WQk289QOKL?mode=wwt" target="_blank">Join Grup WA Sekarang!</a>
+      <p>Pengalaman saya dalam menangani beberapa akun, pesan seperti "tidak menargetkan penelusuran yang relevan" (atau variasinya) muncul di tab Diagnostics/Keywords. Sekilas membingungkan, apalagi kalau kita sudah menggunakan broad match dan volume pencarian tampak besar. Tenang—indikator ini bukan vonis final, hanya sinyal bahwa kombinasi sinyalmu (keyword + setelan + kualitas) belum cukup kuat untuk masuk ke lelang yang relevan.</p>
+      <h3>Apa Artinya Pesan Ini?</h3>
+      <p>Google menilai bahwa dengan setelan kampanye saat ini, sistem sulit menemukan pengguna yang penelusurannya cukup relevan untuk menampilkan iklanmu. Ini bisa berarti beberapa hal sekaligus: keyword terlalu sempit, audiens terlalu terbatas, Ad Rank rendah, atau kombinasi ketiganya.</p>
+      <h3>Penyebab Utama</h3>
+      <ul>
+        <li><strong>Mismatch antara keyword dan landing page</strong> – Google mengukur relevansi end-to-end (keyword → iklan → landing page). Jika ada celah, Quality Score turun dan iklan sulit masuk lelang yang relevan.</li>
+        <li><strong>Audiens "Targeting" yang terlalu sempit</strong> – Mode Targeting mengunci tayangan hanya pada segmen tertentu, jauh lebih sempit dari yang mungkin relevan.</li>
+        <li><strong>Negative keyword terlalu agresif</strong> – Banyak advertiser menambahkan negatif terlalu banyak dan akhirnya memblokir query yang sebenarnya relevan.</li>
+        <li><strong>Bid/tCPA tidak kompetitif</strong> – Jika target terlalu rendah dibandingkan kompetitor, sistem memilih tidak menampilkan iklan daripada merugi.</li>
+        <li><strong>Ad Strength lemah</strong> – RSA dengan sedikit variasi membatasi kemampuan Google mengoptimalkan kombinasi iklan yang relevan.</li>
+      </ul>
+      <h3>Solusi Langkah demi Langkah</h3>
+      <h4>1. Audit Relevansi Keyword–Iklan–Landing Page</h4>
+      <p>Pastikan setiap keyword grup memiliki iklan yang menyebut keyword tersebut secara eksplisit, dan landing page yang membahas topik yang sama. Gunakan Dynamic Keyword Insertion (DKI) dengan hati-hati untuk meningkatkan relevansi di headline.</p>
+      <h4>2. Ubah Mode Audiens ke Observation</h4>
+      <p>Sementara pindahkan semua layer audiens dari "Targeting" ke "Observation". Ini memungkinkan iklan menjangkau semua query relevan, sambil tetap mengumpulkan data segmen.</p>
+      <h4>3. Review Negative Keyword List</h4>
+      <p>Hapus sementara negative list yang besar. Jalankan kampanye 5-7 hari, lalu cek Search Terms report—tambahkan kembali negatif hanya yang benar-benar tidak relevan.</p>
+      <h4>4. Perkuat Ad Strength</h4>
+      <p>Tambah headline hingga 15 dan deskripsi hingga 4-5. Masukkan variasi keyword, USP (unique selling proposition), dan CTA yang berbeda. Target Ad Strength minimal "Good".</p>
+      <h4>5. Sesuaikan Bidding</h4>
+      <p>Naikkan tCPA 20-30% atau turunkan tROAS 10-20%. Alternatifnya, switch sementara ke Max Conversions untuk memberi mesin lebih banyak fleksibilitas mencari konversi yang relevan.</p>
+      <p>Setelah melakukan langkah-langkah di atas, beri waktu 5-7 hari sebelum mengevaluasi ulang. Perubahan signifikan di Google Ads membutuhkan waktu bagi sistem untuk belajar dan beradaptasi.</p>
+      <div class="wa-label">Belajar Google Ads Lewat WhatsApp?</div>
+      <a class="wa-cta" href="https://chat.whatsapp.com/KVIKYQdi3xs5WQk289QOKL?mode=wwt" target="_blank">Join Grup WA Sekarang!</a>
+    `
+  },
+  {
+    id: 7,
+    slug: "satu-keyword-tayangan",
+    title: "Kenapa Hanya Satu Keyword yang Dapat Tayangan? (Plus Cara Mengatasi Keyword yang \"Hilang\" dari Keyword Planner)",
+    date: "October 21, 2025",
+    excerpt: "Di banyak akun Google Ads, sering terjadi: dari beberapa kata kunci aktif, hanya satu yang 'menang' lelang dan menyedot hampir semua tayangan. Sisanya sepi, padahal relevan.",
+    content: `
+      <div class="wa-label">Belajar Google Ads Lewat WhatsApp?</div>
+      <a class="wa-cta" href="https://chat.whatsapp.com/KVIKYQdi3xs5WQk289QOKL?mode=wwt" target="_blank">Join Grup WA Sekarang!</a>
+      <p>Di banyak akun Google Ads, sering terjadi: dari beberapa kata kunci aktif, hanya satu yang "menang" lelang dan menyedot hampir semua tayangan. Sisanya sepi, padahal relevan. Lebih bikin bingung lagi, ada keyword yang dulunya muncul di Keyword Planner, tapi sekarang lenyap atau tak lagi bisa ditargetkan.</p>
+      <h3>Kenapa Hanya Satu Keyword yang Dominan?</h3>
+      <h4>1. Keyword Saling "Kanibal"</h4>
+      <p>Jika beberapa keyword dalam satu ad group memiliki makna yang mirip atau tumpang tindih, Google akan memilih yang paling tinggi Ad Rank-nya untuk setiap auction. Keyword lain tidak mendapat kesempatan tayang.</p>
+      <p><strong>Solusi:</strong> Pisahkan keyword-keyword yang mirip ke dalam ad group atau kampanye yang berbeda. Gunakan negative keywords untuk mencegah overlap antar ad group.</p>
+      <h4>2. Perbedaan Quality Score Drastis</h4>
+      <p>Jika satu keyword memiliki Quality Score jauh lebih tinggi (karena relevansi iklan dan landing page lebih baik), keyword itu akan terus menang di lelang sementara yang lain tertinggal.</p>
+      <p><strong>Solusi:</strong> Audit Quality Score tiap keyword. Buat variasi iklan khusus untuk keyword yang Quality Score-nya rendah. Pastikan landing page relevan untuk setiap keyword grup.</p>
+      <h4>3. Broad Match yang "Menelan" Semua Query</h4>
+      <p>Satu keyword dengan broad match bisa matching ke ratusan query berbeda, sehingga keyword lain tidak mendapat giliran. Google memilih broad match yang dinilai paling relevan per query.</p>
+      <p><strong>Solusi:</strong> Kombinasikan match type. Gunakan exact/phrase untuk keyword prioritas, dan broad hanya untuk eksplorasi query baru. Pisahkan ke ad group berbeda berdasarkan match type.</p>
+      <h3>Mengatasi Keyword yang "Hilang" dari Keyword Planner</h3>
+      <p>Ada beberapa alasan keyword bisa hilang dari Keyword Planner atau tidak bisa ditargetkan:</p>
+      <ul>
+        <li><strong>Low Search Volume (LSV)</strong> – Google tidak menampilkan keyword dengan volume pencarian sangat rendah di KW Planner. Di kampanye, keyword ini akan ditandai LSV dan tidak aktif.</li>
+        <li><strong>Keyword dihapus dari sistem</strong> – Google sesekali "menggabungkan" keyword serupa atau menganggap varian tertentu sudah tercakup oleh keyword lain.</li>
+        <li><strong>Pembatasan kebijakan</strong> – Beberapa keyword tidak bisa ditargetkan karena masuk kategori sensitif atau restricted.</li>
+      </ul>
+      <h4>Solusi untuk Keyword yang Hilang</h4>
+      <ol>
+        <li>Gunakan <strong>broad match</strong> pada keyword yang mirip – sistem akan matching ke varian yang relevan bahkan yang tidak muncul di KW Planner.</li>
+        <li>Cek <strong>Search Terms Report</strong> untuk menemukan query aktual yang sudah masuk tapi mungkin tidak terpikirkan sebelumnya.</li>
+        <li>Gunakan <strong>RSA dengan banyak variasi</strong> – lebih banyak kombinasi headline/deskripsi memberi sistem lebih banyak opsi untuk matching query yang tepat.</li>
+        <li>Pertimbangkan <strong>Performance Max</strong> untuk jangkauan yang lebih luas tanpa bergantung pada keyword list yang spesifik.</li>
+      </ol>
+      <div class="wa-label">Belajar Google Ads Lewat WhatsApp?</div>
+      <a class="wa-cta" href="https://chat.whatsapp.com/KVIKYQdi3xs5WQk289QOKL?mode=wwt" target="_blank">Join Grup WA Sekarang!</a>
+    `
+  },
+  {
+    id: 8,
+    slug: "20-pemeriksaan-tidak-tayangan",
+    title: "Google Ads Tidak Dapat Tayangan? Ini 20 Pemeriksaan Penting (Lengkap dengan Solusi Praktis)",
+    date: "October 21, 2025",
+    excerpt: "Banyak pengiklan bingung ketika kampanye Search tetap 'sepi' walau sudah pakai broad match dan kata kunci ber-volume tinggi. Kuncinya: pecah masalahnya secara sistematis.",
+    content: `
+      <div class="wa-label">Belajar Google Ads Lewat WhatsApp?</div>
+      <a class="wa-cta" href="https://chat.whatsapp.com/KVIKYQdi3xs5WQk289QOKL?mode=wwt" target="_blank">Join Grup WA Sekarang!</a>
+      <p>Banyak pengiklan bingung ketika kampanye Search tetap "sepi" walau sudah pakai broad match dan kata kunci ber-volume tinggi. Kuncinya: pecah masalahnya secara sistematis. Di bawah ini ada daftar pemeriksaan berurutan (dari yang paling mendasar hingga teknis) plus solusi yang bisa langsung kamu praktikkan.</p>
+      <h3>1. Pastikan tidak ada "gate" di level akun</h3>
+      <ul>
+        <li>Status tagihan: akun tidak suspended, metode pembayaran aktif, saldo cukup.</li>
+        <li>Status kebijakan: tidak ada penangguhan akun atau iklan ditolak secara massal.</li>
+        <li>Akses MCC: kalau dikelola agensi, pastikan akses tidak dicabut.</li>
+      </ul>
+      <h3>2. Cek status kampanye, ad group, dan iklan</h3>
+      <p>Semua level harus <strong>Enabled/Active</strong>. Satu level yang di-pause sudah cukup membuat iklan tidak tayang.</p>
+      <h3>3. Periksa jadwal tayang (ad schedule)</h3>
+      <p>Kalau jadwal disetel 09.00–17.00 Senin–Jumat, iklan tidak akan muncul di luar jam itu. Buka 24/7 dulu untuk diagnosa.</p>
+      <h3>4. Cek lokasi dan bahasa targeting</h3>
+      <p>Pastikan kota/provinsi/negara yang ditarget sesuai dengan lokasi pengguna yang kamu tuju. Bahasa di setelan kampanye juga harus cocok dengan bahasa browser pengguna.</p>
+      <h3>5. Periksa budget harian</h3>
+      <p>Budget terlalu kecil dibanding CPC rata-rata = iklan hanya muncul sebentar lalu berhenti. Kalau CPC rata-rata Rp3.000 dan budget Rp5.000/hari, hanya ada ruang untuk 1-2 klik.</p>
+      <h3>6. Analisis Ad Rank dan bid</h3>
+      <p>Lihat kolom <strong>Search Lost IS (rank)</strong> di laporan. Kalau angkanya tinggi (misal 70%), artinya iklan sering kalah lelang karena Ad Rank rendah. Solusi: naikkan bid, perbaiki Quality Score, atau kuatkan iklan.</p>
+      <h3>7. Periksa Quality Score komponen per komponen</h3>
+      <ul>
+        <li>Expected CTR – apakah headline iklan menarik dan relevan?</li>
+        <li>Ad Relevance – apakah keyword ada di dalam teks iklan?</li>
+        <li>Landing Page Experience – apakah landing page cepat, mobile-friendly, dan relevan?</li>
+      </ul>
+      <h3>8. Audit negative keyword list</h3>
+      <p>Negative keyword yang terlalu luas bisa memblokir query yang sebenarnya relevan. Matikan sementara, lalu aktifkan kembali satu per satu sambil memantau.</p>
+      <h3>9. Cek match type kombinasi</h3>
+      <p>Exact match yang terlalu sempit bisa menyebabkan hampir tidak ada query yang matching. Coba tambah phrase atau broad match untuk memperluas jangkauan.</p>
+      <h3>10. Periksa status keyword: Low Search Volume (LSV)</h3>
+      <p>Keyword dengan volume pencarian sangat rendah otomatis diberi status LSV dan tidak aktif. Solusi: hapus keyword LSV, ganti dengan broad match dari keyword yang lebih umum.</p>
+      <h3>11. Analisis Impression Share (IS)</h3>
+      <p>IS rendah bisa karena: budget habis (Search Lost IS budget tinggi) atau Ad Rank rendah (Search Lost IS rank tinggi). Dua solusi yang berbeda untuk dua masalah yang berbeda.</p>
+      <h3>12. Cek persetujuan iklan (ad approval)</h3>
+      <p>Iklan berstatus "Under Review" atau "Disapproved" tidak akan tayang. Cek di level iklan, bukan hanya di level kampanye.</p>
+      <h3>13. Periksa setelan audiens</h3>
+      <p>Mode "Targeting" pada segmen audiens membatasi tayangan hanya pada audiens tersebut. Ubah ke "Observation" untuk jangkauan penuh.</p>
+      <h3>14. Evaluasi Smart Bidding target</h3>
+      <p>tCPA atau tROAS yang terlalu ketat membuat sistem memilih untuk tidak menampilkan iklan daripada merugi. Longgarkan target atau switch ke Max Conversions/Clicks sementara.</p>
+      <h3>15. Cek konflik antar kampanye (cannibalization)</h3>
+      <p>Performance Max dan Search kampanye yang menarget query sama bisa saling berkompetisi. PMax biasanya "menang" dan Search kampanye kelaparan tayangan.</p>
+      <h3>16. Periksa content exclusion dan inventory type</h3>
+      <p>Setelan content exclusion yang ketat (untuk Display/YouTube) bisa secara tidak sengaja membatasi jangkauan. Verifikasi setelan ini di level kampanye.</p>
+      <h3>17. Analisis Diagnostics Tool</h3>
+      <p>Di Google Ads, gunakan Keyword Diagnosis Tool (klik tanda ? di sebelah status keyword). Alat ini memberikan penjelasan spesifik kenapa keyword tidak menghasilkan tayangan.</p>
+      <h3>18. Periksa Landing Page</h3>
+      <p>Landing page yang down, lambat (&gt;3 detik load time), atau memiliki konten yang melanggar kebijakan Google bisa menyebabkan iklan dihentikan otomatis.</p>
+      <h3>19. Verifikasi setelan rotasi iklan</h3>
+      <p>"Optimize: prefer best performing ads" artinya iklan dengan performa lemah jarang ditampilkan. Kalau semua iklan performa lemah, sistem bisa memilih untuk tidak tayang.</p>
+      <h3>20. Periksa shared budget dan portfolio bidding</h3>
+      <p>Shared budget yang digunakan beberapa kampanye bisa menyebabkan satu kampanye "menghabiskan" budget kampanye lain. Pisahkan budget per kampanye untuk diagnosa awal.</p>
+      <p>Dengan memeriksa 20 poin di atas secara berurutan, kamu akan menemukan akar masalah dengan lebih cepat dan tepat. Catat temuan di setiap langkah—data ini akan sangat berguna saat berkonsultasi dengan tim atau komunitas Google Ads.</p>
+      <div class="wa-label">Belajar Google Ads Lewat WhatsApp?</div>
+      <a class="wa-cta" href="https://chat.whatsapp.com/KVIKYQdi3xs5WQk289QOKL?mode=wwt" target="_blank">Join Grup WA Sekarang!</a>
+    `
+  },
+  {
+    id: 9,
+    slug: "smart-bidding",
+    title: "Memahami Cara Smart Bidding di Google Ads Berfungsi",
+    date: "October 21, 2025",
+    excerpt: "Saat saya pertama kali menggunakan Google Ads, mengatur bid terasa seperti permainan tebak-tebakan. Namun, berkat Smart Bidding, semuanya sekarang jauh lebih mudah dan otomatis.",
+    content: `
+      <div class="wa-label">Belajar Google Ads Lewat WhatsApp?</div>
+      <a class="wa-cta" href="https://chat.whatsapp.com/KVIKYQdi3xs5WQk289QOKL?mode=wwt" target="_blank">Join Grup WA Sekarang!</a>
+      <p>Saat saya pertama kali menggunakan Google Ads, mengatur bid terasa seperti permainan tebak-tebakan. Apakah saya perlu menaikkan harga? Apakah penawaran ini cukup? Namun, berkat Smart Bidding, semuanya sekarang jauh lebih mudah dan otomatis. Saya sering melihat banyak bisnis yang menghadapi masalah dengan Google Ads. Mereka ingin mendapatkan hasil terbaik, tetapi sering kali tidak tahu bagaimana cara mengoptimalkan bid mereka secara efektif.</p>
+      <h3>Apa Itu Smart Bidding?</h3>
+      <p>Smart Bidding adalah kumpulan strategi penawaran otomatis di Google Ads yang menggunakan machine learning untuk mengoptimalkan konversi atau nilai konversi di setiap lelang—fenomena yang disebut "bidding at auction-time". Berbeda dengan bidding manual di mana kamu menetapkan CPC maksimum secara tetap, Smart Bidding menyesuaikan bid secara real-time berdasarkan ratusan sinyal kontekstual.</p>
+      <h3>Sinyal yang Digunakan Smart Bidding</h3>
+      <ul>
+        <li><strong>Perangkat</strong> – mobile, desktop, tablet memiliki pola konversi berbeda</li>
+        <li><strong>Lokasi &amp; radius lokasi</strong> – area tertentu bisa konversi lebih tinggi</li>
+        <li><strong>Waktu dan hari</strong> – jam sibuk vs jam sepi</li>
+        <li><strong>Query penelusuran aktual</strong> – bukan hanya keyword, tapi query persis yang diketik</li>
+        <li><strong>Browser dan OS</strong> – preferensi pengguna berdasarkan ekosistem</li>
+        <li><strong>Demografi</strong> – usia dan jenis kelamin jika tersedia</li>
+        <li><strong>Perilaku sebelumnya</strong> – apakah pengguna pernah mengunjungi situs kamu</li>
+        <li><strong>Konten halaman</strong> – konteks situs atau aplikasi tempat iklan muncul</li>
+      </ul>
+      <h3>Jenis-Jenis Smart Bidding</h3>
+      <h4>Target CPA (Cost Per Acquisition)</h4>
+      <p>Smart Bidding akan menyesuaikan bid untuk mendapatkan konversi sebanyak mungkin dengan biaya per konversi mendekati target yang kamu tetapkan. Cocok untuk bisnis yang sudah tahu berapa nilai konversi dan berapa maksimal biaya yang bisa ditanggung.</p>
+      <h4>Target ROAS (Return On Ad Spend)</h4>
+      <p>Sistem mengoptimalkan untuk memaksimalkan nilai konversi sambil mencapai target ROAS yang kamu tetapkan. Cocok untuk e-commerce dengan nilai transaksi bervariasi.</p>
+      <h4>Maximize Conversions</h4>
+      <p>Sistem memaksimalkan jumlah konversi dalam batas budget yang tersedia, tanpa target CPA spesifik. Bagus untuk kampanye baru yang butuh data.</p>
+      <h4>Maximize Conversion Value</h4>
+      <p>Seperti Maximize Conversions, tapi fokus pada nilai total konversi, bukan jumlah. Ideal jika konversi bernilai berbeda-beda.</p>
+      <h3>Kapan Smart Bidding Bekerja Optimal?</h3>
+      <p>Smart Bidding membutuhkan data untuk belajar. Secara umum, sistem bekerja paling baik ketika:</p>
+      <ul>
+        <li>Ada minimal <strong>30–50 konversi per bulan</strong> per kampanye (idealnya lebih)</li>
+        <li>Tracking konversi sudah terpasang dengan benar dan akurat</li>
+        <li>Target CPA/ROAS yang ditetapkan realistis berdasarkan performa historis</li>
+        <li>Kampanye sudah melewati masa <strong>learning period</strong> (biasanya 1-2 minggu)</li>
+      </ul>
+      <h3>Tips Menggunakan Smart Bidding Secara Efektif</h3>
+      <ol>
+        <li><strong>Jangan ubah target terlalu sering</strong> – setiap perubahan target memulai ulang learning period.</li>
+        <li><strong>Mulai dengan target yang realistis</strong> – gunakan performa historis sebagai baseline, jangan langsung pasang target terlalu agresif.</li>
+        <li><strong>Beri waktu belajar</strong> – evaluasi minimal setelah 2 minggu atau setelah ada 50+ konversi.</li>
+        <li><strong>Jaga kualitas tracking</strong> – Smart Bidding hanya sebaik data yang diterimanya. Tracking yang salah = optimasi yang salah.</li>
+        <li><strong>Monitor learning status</strong> – indikator "Learning" di kampanye menunjukkan sistem masih mengumpulkan data.</li>
+      </ol>
+      <div class="wa-label">Belajar Google Ads Lewat WhatsApp?</div>
+      <a class="wa-cta" href="https://chat.whatsapp.com/KVIKYQdi3xs5WQk289QOKL?mode=wwt" target="_blank">Join Grup WA Sekarang!</a>
+    `
+  },
+  {
+    id: 10,
+    slug: "personalized-advertising",
+    title: "Kupas Habis Kebijakan Google Ads Personalized Advertising",
+    date: "October 21, 2025",
+    excerpt: "Selama bertahun-tahun berpartisipasi dalam kegiatan operasional CV Widjaya Bharata Pasifik dan membantu berbagai bisnis marketing di dalamnya, saya sering menerima pertanyaan tentang kebijakan iklan Google.",
+    content: `
+      <div class="wa-label">Belajar Google Ads Lewat WhatsApp?</div>
+      <a class="wa-cta" href="https://chat.whatsapp.com/KVIKYQdi3xs5WQk289QOKL?mode=wwt" target="_blank">Join Grup WA Sekarang!</a>
+      <p>Selama bertahun-tahun berpartisipasi dalam kegiatan operasional CV Widjaya Bharata Pasifik dan membantu berbagai bisnis marketing di dalamnya, saya sering menerima pertanyaan tentang kebijakan iklan Google. Salah satu pertanyaan yang paling sering diajukan adalah tentang kebijakan iklan pribadi (Personalized Advertising). Jika Anda sering menggunakan Google untuk beriklan, kebijakan ini pasti sudah Anda kenal.</p>
+      <h3>Apa Itu Personalized Advertising?</h3>
+      <p>Personalized Advertising (PA) adalah sistem Google Ads yang memungkinkan pengiklan menargetkan audiens berdasarkan data pribadi dan perilaku pengguna, seperti minat, demografi, riwayat penelusuran, dan aktivitas di situs/aplikasi. Dengan PA, iklan dapat ditampilkan kepada orang yang paling mungkin tertarik dengan produk atau layanan yang ditawarkan.</p>
+      <h3>Kategori yang Dilarang dalam Personalized Advertising</h3>
+      <p>Google memiliki kebijakan ketat tentang kategori apa yang tidak boleh ditargetkan secara personal. Kategori yang dilarang meliputi:</p>
+      <ul>
+        <li><strong>Informasi kesehatan sensitif</strong> – kondisi medis tertentu, disabilitas, prosedur medis</li>
+        <li><strong>Status keuangan negatif</strong> – kebangkrutan, masalah utang, riwayat kredit buruk</li>
+        <li><strong>Identitas seksual atau gender</strong></li>
+        <li><strong>Afiliasi agama atau kepercayaan</strong></li>
+        <li><strong>Afiliasi politik</strong></li>
+        <li><strong>Status imigrasi</strong></li>
+        <li><strong>Pengalaman traumatis atau sulit</strong> – seperti kehilangan orang tua, perceraian</li>
+        <li><strong>Ras, etnis, atau asal usul nasional</strong></li>
+      </ul>
+      <h3>Kategori Produk yang Dibatasi</h3>
+      <p>Selain kategori audiens, beberapa kategori produk/layanan juga memiliki batasan dalam PA:</p>
+      <ul>
+        <li><strong>Alkohol</strong> – hanya bisa ditargetkan ke usia legal, tidak bisa menggunakan data kesehatan</li>
+        <li><strong>Perjudian</strong> – perlu sertifikasi Google, dibatasi secara geografis</li>
+        <li><strong>Obat-obatan</strong> – kategori tertentu memerlukan pre-approval</li>
+        <li><strong>Konten seksual</strong> – sangat dibatasi, tidak boleh menggunakan targeting demografis sensitif</li>
+        <li><strong>Layanan keuangan</strong> – tidak boleh menarget berdasarkan kondisi finansial negatif</li>
+      </ul>
+      <h3>Implikasi Praktis untuk Pengiklan</h3>
+      <h4>Penggunaan Customer Match</h4>
+      <p>Data customer yang kamu upload ke Google Ads (email list, phone number) harus diperoleh secara sah dengan persetujuan pengguna. Kamu tidak boleh menggunakan data yang dibeli dari pihak ketiga atau data yang dikumpulkan tanpa izin eksplisit.</p>
+      <h4>Remarketing dan Similar Audiences</h4>
+      <p>Saat menggunakan remarketing, pastikan kamu tidak menargetkan ulang pengguna berdasarkan informasi sensitif yang mungkin tersirat dari perilaku mereka di situs (misalnya, pengguna yang mengunjungi halaman kondisi medis tertentu).</p>
+      <h4>Transparent Disclosure</h4>
+      <p>Privacy policy situs kamu harus menjelaskan secara jelas bagaimana data pengguna dikumpulkan dan digunakan untuk keperluan iklan. Ini bukan hanya syarat Google, tapi juga kewajiban hukum di banyak yurisdiksi.</p>
+      <h3>Tips Tetap Compliance dengan Kebijakan PA</h3>
+      <ol>
+        <li>Selalu cek kebijakan terbaru di <strong>support.google.com/adspolicy</strong> karena kebijakan bisa berubah.</li>
+        <li>Gunakan <strong>Content Exclusions</strong> untuk menghindari iklan muncul di konten yang tidak sesuai merek.</li>
+        <li>Audit audience list secara berkala untuk memastikan tidak ada list yang melanggar kebijakan.</li>
+        <li>Jika iklan ditolak karena PA policy, baca pesan penolakan dengan teliti dan sesuaikan targeting atau konten iklan.</li>
+        <li>Untuk kategori sensitif, pertimbangkan menggunakan <strong>contextual targeting</strong> (keyword, placement) daripada audience-based targeting.</li>
+      </ol>
+      <p>Memahami kebijakan Personalized Advertising bukan hanya soal compliance, tapi juga soal membangun kepercayaan dengan audiens. Pengiklan yang menghormati privasi pengguna pada akhirnya membangun brand yang lebih kuat dan hubungan pelanggan yang lebih loyal.</p>
+      <div class="wa-label">Belajar Google Ads Lewat WhatsApp?</div>
+      <a class="wa-cta" href="https://chat.whatsapp.com/KVIKYQdi3xs5WQk289QOKL?mode=wwt" target="_blank">Join Grup WA Sekarang!</a>
+    `
+  }
+];
+
+function buildSidebar(containerId) {
+  const el = document.getElementById(containerId);
+  el.innerHTML = `
+    <div class="sidebar-widget">
+      <div class="widget-title">Recent Posts</div>
+      <ul class="recent-posts-list">
+        ${posts.slice(0, 5).map(p => `<li><a onclick="showPost(${p.id})">${p.title}</a></li>`).join('')}
+      </ul>
+    </div>
+    <div class="sidebar-widget">
+      <div class="widget-title">About</div>
+      <p class="about-text">Google Ads Expert</p>
+      <div class="social-links">
+        <a href="#">Twitter</a>
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+  `;
+}
+
+function buildPostList() {
+  const el = document.getElementById('post-list');
+  el.innerHTML = posts.map(p => `
+    <div class="post-card" onclick="showPost(${p.id})">
+      <div class="post-date">${p.date}</div>
+      <h2>${p.title}</h2>
+      <p class="post-excerpt">${p.excerpt}</p>
+      <span class="read-more">Read more</span>
+    </div>
+  `).join('');
+}
+
+function showPost(id) {
+  const post = posts.find(p => p.id === id);
+  if (!post) return;
+  document.getElementById('home-view').style.display = 'none';
+  document.getElementById('single-view').style.display = 'block';
+  document.getElementById('post-full-content').innerHTML = `
+    <button class="back-btn" onclick="showHome()">← Back to posts</button>
+    <div class="post-date">${post.date}</div>
+    <h1>${post.title}</h1>
+    <div class="post-content">${post.content}</div>
+  `;
+  buildSidebar('sidebar-single');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showHome() {
+  document.getElementById('single-view').style.display = 'none';
+  document.getElementById('home-view').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Init
+buildPostList();
+buildSidebar('sidebar-home');
+</script>
+</body>
+</html>
