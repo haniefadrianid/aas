@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adrian Ads Spesialis – Jasa Google Ads & Optimasi Konversi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #1a73e8; --blue-dark: #1558b0; --blue-light: #e8f0fe;
+      --red: #ea4335; --yellow: #fbbc04; --green: #34a853;
+      --dark: #0d1b3e; --gray: #5f6368; --light: #f8f9fa;
+      --white: #ffffff; --border: #e0e0e0;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: #333; background: #fff; overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 999;
+      background: rgba(255,255,255,.97); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px; display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-icon { width: 36px; height: 36px; background: var(--blue); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .nav-logo-text { font-size: 18px; font-weight: 800; color: var(--dark); }
+    .nav-logo-text span { color: var(--blue); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--gray); font-weight: 500; font-size: 14px; transition: color .2s; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta { background: var(--blue); color: #fff; padding: 10px 22px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 14px; transition: background .2s, transform .2s; }
+    .nav-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: var(--dark); border-radius: 2px; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #060f25 0%, #0d1b3e 40%, #1a3a7a 80%, #1a73e8 100%);
+      color: #fff; padding: 90px 24px 80px; text-align: center; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 10%, rgba(26,115,232,.25) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(251,188,4,.08) 0%, transparent 50%);
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(251,188,4,.15); border: 1px solid rgba(251,188,4,.4);
+      border-radius: 100px; padding: 6px 18px; font-size: 12px; font-weight: 700;
+      color: #fbbc04; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 28px;
+    }
+    .hero-badge .dot { width: 7px; height: 7px; background: #fbbc04; border-radius: 50%; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+    .hero h1 { font-size: clamp(34px, 6vw, 64px); font-weight: 900; line-height: 1.08; margin-bottom: 20px; letter-spacing: -1px; }
+    .hero h1 .highlight { color: #fbbc04; }
+    .hero h1 .blue { color: #6ab3ff; }
+    .hero-sub { font-size: clamp(16px, 2.5vw, 20px); opacity: .85; max-width: 680px; margin: 0 auto 16px; line-height: 1.65; font-weight: 400; }
+    .hero-pain { font-size: 15px; opacity: .6; margin-bottom: 36px; font-style: italic; }
+    .hero-btns { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 52px; }
+    .btn-yellow { background: #fbbc04; color: #111; padding: 16px 36px; border-radius: 10px; font-weight: 800; font-size: 16px; text-decoration: none; transition: transform .2s, box-shadow .2s; }
+    .btn-yellow:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(251,188,4,.4); }
+    .btn-ghost { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,.4); padding: 16px 32px; border-radius: 10px; font-weight: 600; font-size: 15px; text-decoration: none; transition: all .2s; }
+    .btn-ghost:hover { border-color: rgba(255,255,255,.8); background: rgba(255,255,255,.08); }
+    .hero-stats { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-num { font-size: 34px; font-weight: 900; color: #fbbc04; line-height: 1; }
+    .stat-label { font-size: 13px; opacity: .6; margin-top: 6px; }
+
+    /* TRUST BAR */
+    .trust-bar { background: #f8f9fa; border-bottom: 1px solid var(--border); padding: 20px 24px; }
+    .trust-bar-inner { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap; font-size: 13px; color: var(--gray); font-weight: 600; }
+    .trust-item { display: flex; align-items: center; gap: 7px; }
+
+    /* SECTIONS */
+    section { padding: 80px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-eyebrow { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--blue); margin-bottom: 10px; }
+    .section-title { font-size: clamp(28px, 4vw, 42px); font-weight: 900; color: var(--dark); margin-bottom: 16px; line-height: 1.15; letter-spacing: -.5px; }
+    .section-title .accent { color: var(--blue); }
+    .section-sub { font-size: 16px; color: var(--gray); max-width: 580px; line-height: 1.75; }
+
+    /* MASALAH */
+    #masalah { background: var(--dark); color: #fff; }
+    #masalah .section-eyebrow { color: #fbbc04; }
+    #masalah .section-title { color: #fff; }
+    #masalah .section-sub { color: rgba(255,255,255,.6); }
+    .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 44px; }
+    .problem-card { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: 14px; padding: 28px 24px; }
+    .problem-card.hot { border-color: rgba(251,188,4,.35); background: rgba(251,188,4,.06); }
+    .problem-icon { font-size: 32px; margin-bottom: 14px; }
+    .problem-title { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .problem-desc { font-size: 14px; color: rgba(255,255,255,.6); line-height: 1.75; }
+
+    /* LAYANAN */
+    #layanan { background: #fff; }
+    .layanan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; margin-top: 44px; }
+    .layanan-card { border: 1px solid var(--border); border-radius: 18px; padding: 36px 28px; position: relative; overflow: hidden; transition: box-shadow .25s, transform .25s, border-color .25s; }
+    .layanan-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--blue); border-radius: 18px 18px 0 0; }
+    .layanan-card.gold::before { background: linear-gradient(90deg, #fbbc04, #e09c00); }
+    .layanan-card.green::before { background: var(--green); }
+    .layanan-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,.1); transform: translateY(-5px); border-color: #c5d9f5; }
+    .layanan-icon { font-size: 36px; margin-bottom: 20px; }
+    .layanan-name { font-size: 20px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+    .layanan-tagline { font-size: 13px; color: var(--blue); font-weight: 600; margin-bottom: 14px; }
+    .layanan-desc { font-size: 14px; color: var(--gray); line-height: 1.75; margin-bottom: 20px; }
+    .layanan-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .layanan-list li { font-size: 14px; display: flex; gap: 9px; align-items: flex-start; line-height: 1.5; }
+    .layanan-list li::before { content: '✓'; color: var(--green); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+
+    /* PROSES */
+    #proses { background: var(--light); }
+    .proses-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin-top: 52px; position: relative; }
+    .proses-steps::before { content: ''; position: absolute; top: 31px; left: 10%; right: 10%; height: 2px; background: linear-gradient(90deg, var(--blue-light), var(--blue), var(--blue-light)); z-index: 0; }
+    .step { text-align: center; padding: 0 12px; position: relative; z-index: 1; }
+    .step-num { width: 62px; height: 62px; border-radius: 50%; background: var(--blue); color: #fff; font-size: 22px; font-weight: 900; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; border: 4px solid #fff; box-shadow: 0 4px 20px rgba(26,115,232,.3); }
+    .step-title { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+    .step-desc { font-size: 13px; color: var(--gray); line-height: 1.65; }
+
+    /* HASIL */
+    #hasil { background: #fff; }
+    .result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; margin-top: 44px; }
+    .result-card { background: linear-gradient(135deg, #0d1b3e, #1a3a7a); border-radius: 16px; padding: 32px 24px; color: #fff; text-align: center; }
+    .result-metric { font-size: 44px; font-weight: 900; color: #fbbc04; line-height: 1; margin-bottom: 12px; }
+    .result-label { font-size: 14px; opacity: .75; line-height: 1.65; }
+    .result-sector { display: inline-block; background: rgba(255,255,255,.12); border-radius: 100px; padding: 4px 14px; font-size: 12px; font-weight: 600; margin-top: 14px; }
+
+    /* COCOK */
+    #cocok { background: var(--dark); color: #fff; }
+    #cocok .section-eyebrow { color: #fbbc04; }
+    #cocok .section-title { color: #fff; }
+    #cocok .section-sub { color: rgba(255,255,255,.6); }
+    .cocok-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; margin-top: 40px; }
+    .cocok-item { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; padding: 20px 14px; text-align: center; transition: background .2s, transform .2s; }
+    .cocok-item:hover { background: rgba(255,255,255,.13); transform: translateY(-3px); }
+    .cocok-item .icon { font-size: 28px; margin-bottom: 10px; }
+    .cocok-item .label { font-size: 13px; font-weight: 600; }
+
+    /* HARGA */
+    #harga { background: #fff; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 28px; margin-top: 48px; align-items: start; }
+    .price-card { border: 2px solid var(--border); border-radius: 20px; padding: 36px 28px; position: relative; transition: box-shadow .25s; }
+    .price-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,.1); }
+    .price-card.featured { border-color: var(--blue); }
+    .featured-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--blue); color: #fff; font-size: 12px; font-weight: 700; padding: 5px 20px; border-radius: 100px; white-space: nowrap; }
+    .price-name { font-size: 19px; font-weight: 800; color: var(--dark); margin-bottom: 6px; }
+    .price-tagline { font-size: 13px; color: var(--gray); margin-bottom: 22px; }
+    .price-amount { font-size: 34px; font-weight: 900; color: var(--dark); margin-bottom: 4px; }
+    .price-amount span { font-size: 16px; font-weight: 500; }
+    .price-note-small { font-size: 12px; color: var(--gray); margin-bottom: 24px; }
+    .price-includes { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+    .price-includes li { font-size: 14px; display: flex; gap: 10px; align-items: flex-start; line-height: 1.5; }
+    .price-includes li::before { content: '✓'; color: var(--green); font-weight: 800; flex-shrink: 0; }
+    .price-includes li.no::before { content: '✕'; color: #ccc; }
+    .price-cta { display: block; text-align: center; padding: 14px; border-radius: 10px; font-weight: 700; font-size: 15px; text-decoration: none; transition: all .2s; }
+    .price-cta.primary { background: var(--blue); color: #fff; }
+    .price-cta.primary:hover { background: var(--blue-dark); }
+    .price-cta.outline { border: 2px solid var(--border); color: var(--dark); }
+    .price-cta.outline:hover { border-color: var(--blue); color: var(--blue); }
+
+    /* GARANSI */
+    #garansi { background: linear-gradient(135deg, #060f25, #1a3a7a); color: #fff; text-align: center; }
+    #garansi .section-title { color: #fff; }
+    .garansi-box { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.15); border-radius: 20px; padding: 48px 40px; max-width: 700px; margin: 40px auto 0; }
+    .garansi-icon { font-size: 56px; margin-bottom: 20px; }
+    .garansi-title { font-size: 24px; font-weight: 800; margin-bottom: 16px; }
+    .garansi-desc { font-size: 16px; opacity: .8; line-height: 1.8; margin-bottom: 28px; }
+    .garansi-points { list-style: none; display: flex; flex-direction: column; gap: 14px; text-align: left; max-width: 500px; margin: 0 auto; }
+    .garansi-points li { display: flex; gap: 12px; font-size: 15px; opacity: .88; line-height: 1.6; }
+    .garansi-points li::before { content: '🛡️'; flex-shrink: 0; }
+
+    /* TESTIMONI */
+    #testimoni { background: var(--light); }
+    .testi-scroll { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 14px; margin-top: 44px; scroll-snap-type: x mandatory; }
+    .testi-scroll::-webkit-scrollbar { height: 5px; }
+    .testi-scroll::-webkit-scrollbar-thumb { background: #ddd; border-radius: 10px; }
+    .testi-card { min-width: 320px; background: #fff; border-radius: 18px; padding: 28px; border: 1px solid var(--border); scroll-snap-align: start; box-shadow: 0 2px 14px rgba(0,0,0,.06); }
+    .testi-top { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+    .testi-avatar { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
+    .testi-name { font-weight: 700; font-size: 15px; color: var(--dark); }
+    .testi-biz { font-size: 12px; color: var(--gray); margin-top: 2px; }
+    .testi-stars { color: #fbbc04; font-size: 15px; margin-bottom: 12px; }
+    .testi-text { font-size: 14px; color: #555; line-height: 1.75; font-style: italic; }
+    .testi-result { margin-top: 14px; background: #e8f5e9; border-radius: 8px; padding: 10px 14px; font-size: 13px; font-weight: 700; color: #2e7d32; }
+    .g-logo { width: 18px; margin-left: auto; flex-shrink: 0; }
+
+    /* FAQ */
+    #faq { background: #fff; }
+    .faq-list { margin-top: 40px; display: flex; flex-direction: column; gap: 12px; max-width: 780px; }
+    .faq-item { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: border-color .2s; }
+    .faq-item.open { border-color: var(--blue); }
+    .faq-q { padding: 20px 24px; font-weight: 700; font-size: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--dark); user-select: none; }
+    .faq-q .chevron { font-size: 18px; transition: transform .3s; flex-shrink: 0; margin-left: 12px; }
+    .faq-a { padding: 0 24px; max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s; font-size: 14px; color: var(--gray); line-height: 1.8; }
+    .faq-item.open .faq-a { max-height: 400px; padding-bottom: 20px; }
+    .faq-item.open .chevron { transform: rotate(180deg); }
+
+    /* CTA BOTTOM */
+    #cta-bottom { background: var(--blue); color: #fff; text-align: center; padding: 80px 24px; }
+    #cta-bottom h2 { font-size: clamp(26px, 4vw, 42px); font-weight: 900; margin-bottom: 16px; line-height: 1.15; }
+    #cta-bottom p { font-size: 17px; opacity: .85; margin-bottom: 36px; max-width: 560px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+    .cta-note { margin-top: 20px !important; font-size: 13px !important; opacity: .6 !important; }
+
+    /* FOOTER */
+    footer { background: #060f25; color: rgba(255,255,255,.75); padding: 60px 24px 32px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
+    .footer-brand { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 14px; }
+    .footer-brand span { color: #6ab3ff; }
+    .footer-desc { font-size: 14px; line-height: 1.8; opacity: .6; }
+    .footer-heading { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #fff; margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 14px; opacity: .65; }
+    .footer-links a { color: inherit; text-decoration: none; }
+    .footer-links a:hover { opacity: 1; color: #fff; }
+    .footer-bottom { max-width: 1100px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.08); text-align: center; font-size: 13px; opacity: .4; }
+
+    /* WA FLOAT */
+    .wa-float { position: fixed; bottom: 24px; right: 24px; z-index: 999; }
+    .wa-float a { display: flex; align-items: center; gap: 10px; background: #25d366; color: #fff; padding: 14px 22px; border-radius: 100px; text-decoration: none; font-weight: 700; font-size: 14px; box-shadow: 0 6px 24px rgba(37,211,102,.4); transition: transform .2s, box-shadow .2s; }
+    .wa-float a:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(37,211,102,.5); }
+
+    @media (max-width: 900px) {
+      .proses-steps { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .proses-steps::before { display: none; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero-stats { gap: 24px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+      .garansi-box { padding: 32px 20px; }
+      .proses-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-icon">🎯</div>
+    <div class="nav-logo-text">Dominasi <span>Pasar</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#layanan">Layanan</a></li>
+    <li><a href="#proses">Cara Kerja</a></li>
+    <li><a href="#harga">Harga</a></li>
+    <li><a href="#testimoni">Hasil Klien</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="https://wa.me/6282127644597?text=Halo%20Adrian,%20saya%20mau%20konsultasi%20jasa%20Google%20Ads" target="_blank" class="nav-cta">Konsultasi Gratis</a>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge"><span class="dot"></span> Adrian Ads Spesialis — Google Ads Expert</div>
+    <h1>Iklan Google Ads Anda<br><span class="highlight">Hasilkan Leads</span> yang<br><span class="blue">Benar-Benar Beli</span></h1>
+    <p class="hero-sub">Kami tidak sekadar menjalankan iklan — kami mengoptimasi setiap rupiah budget Anda untuk mendatangkan calon pelanggan yang sudah siap transaksi, bukan sekadar klik penasaran.</p>
+    <p class="hero-pain">Lelah buang budget besar tapi leads sepi? Banyak klik tapi tidak ada yang closing?</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/6282127644597?text=Halo%20Adrian,%20saya%20mau%20audit%20iklan%20gratis" target="_blank" class="btn-yellow">🔍 Audit Iklan Gratis Sekarang</a>
+      <a href="#layanan" class="btn-ghost">Lihat Layanan Kami</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">3.000+</div><div class="stat-label">Kampanye Dikelola</div></div>
+      <div class="stat"><div class="stat-num">Rp 15M+</div><div class="stat-label">Budget Iklan Dioptimasi</div></div>
+      <div class="stat"><div class="stat-num">300%</div><div class="stat-label">Rata-rata Peningkatan ROAS</div></div>
+      <div class="stat"><div class="stat-num">5 Tahun</div><div class="stat-label">Pengalaman Google Ads</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item">✅ Google Partner Bersertifikat</div>
+    <div class="trust-item">🔒 Tanpa Kontrak Jangka Panjang</div>
+    <div class="trust-item">📊 Laporan Transparan Setiap Minggu</div>
+    <div class="trust-item">🚀 Iklan Tayang dalam 3 Hari Kerja</div>
+    <div class="trust-item">💬 Konsultasi WhatsApp Langsung</div>
+  </div>
+</div>
+
+<!-- MASALAH -->
+<section id="masalah">
+  <div class="container">
+    <p class="section-eyebrow">Kenapa Iklan Anda Tidak Berkinerja?</p>
+    <h2 class="section-title" style="color:#fff">5 Masalah Umum yang<br><span style="color:#fbbc04">Menguras Budget Anda</span></h2>
+    <p class="section-sub">Jika Anda mengalami salah satu ini, iklan Anda sedang membakar uang setiap hari.</p>
+    <div class="problem-grid">
+      <div class="problem-card hot">
+        <div class="problem-icon">💸</div>
+        <div class="problem-title">Budget Habis, Leads Nol</div>
+        <p class="problem-desc">Ribuan rupiah per klik, tapi yang masuk hanya orang iseng yang tidak punya niat beli. Budget terkuras tanpa hasil nyata.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">🎯</div>
+        <div class="problem-title">Salah Menarget Kata Kunci</div>
+        <p class="problem-desc">Iklan muncul untuk pencarian yang tidak relevan — misalnya jual properti tapi iklan tampil untuk orang yang hanya baca artikel.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">📉</div>
+        <div class="problem-title">Quality Score Rendah</div>
+        <p class="problem-desc">Landing page tidak relevan dengan iklan membuat Google menaikkan harga per klik dan menurunkan posisi tayang Anda.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">🤖</div>
+        <div class="problem-title">Menyerahkan Semuanya ke AI</div>
+        <p class="problem-desc">Smart campaign Google terdengar mudah, tapi tanpa pengawasan manual, AI menghabiskan budget sesuai target Google — bukan target bisnis Anda.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">📋</div>
+        <div class="problem-title">Tidak Ada Tracking Konversi</div>
+        <p class="problem-desc">Tanpa conversion tracking, Anda buta. Tidak tahu kata kunci mana yang menghasilkan leads, mana yang hanya membakar uang.</p>
+      </div>
+      <div class="problem-card hot">
+        <div class="problem-icon">🧱</div>
+        <div class="problem-title">Landing Page Tidak Dioptimasi</div>
+        <p class="problem-desc">Pengunjung datang, lalu pergi dalam 5 detik. Landing page lambat dan tidak persuasif membunuh konversi meski iklannya sudah bagus.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LAYANAN -->
+<section id="layanan">
+  <div class="container">
+    <p class="section-eyebrow">Layanan Kami</p>
+    <h2 class="section-title">Solusi Google Ads yang<br><span class="accent">Berfokus pada Profit</span></h2>
+    <p class="section-sub">Bukan sekadar menjalankan iklan — kami merancang sistem iklan yang menghasilkan leads berkualitas secara konsisten.</p>
+    <div class="layanan-grid">
+      <div class="layanan-card">
+        <div class="layanan-icon">⚙️</div>
+        <div class="layanan-name">Setup & Struktur Kampanye</div>
+        <div class="layanan-tagline">Fondasi yang benar sejak hari pertama</div>
+        <p class="layanan-desc">Kami bangun arsitektur kampanye Google Ads dari nol dengan struktur yang optimal — mencegah kebocoran budget dan memastikan iklan muncul di momen yang tepat.</p>
+        <ul class="layanan-list">
+          <li>Riset kata kunci high-intent (niat beli tinggi)</li>
+          <li>Negative keyword list untuk blokir trafik tidak relevan</li>
+          <li>Copywriting iklan dengan CTR tinggi</li>
+          <li>Setup Conversion Tracking & Google Tag Manager</li>
+          <li>Integrasi Google Analytics 4</li>
+        </ul>
+      </div>
+      <div class="layanan-card gold">
+        <div class="layanan-icon">📈</div>
+        <div class="layanan-name">Full Manage & Optimasi</div>
+        <div class="layanan-tagline">Pengelolaan iklan aktif setiap hari</div>
+        <p class="layanan-desc">Tim kami memantau dan mengoptimasi kampanye Anda secara aktif — membuang kata kunci boros, meningkatkan bid pada yang menghasilkan, dan terus mengejar Quality Score 10/10.</p>
+        <ul class="layanan-list">
+          <li>Monitoring harian & optimasi bid manual</li>
+          <li>A/B testing iklan secara berkala</li>
+          <li>Optimasi Quality Score & Ad Rank</li>
+          <li>Laporan performa mingguan yang transparan</li>
+          <li>Konsultasi WhatsApp langsung dengan spesialis</li>
+          <li>Review & rekomendasi landing page</li>
+        </ul>
+      </div>
+      <div class="layanan-card green">
+        <div class="layanan-icon">🌐</div>
+        <div class="layanan-name">Landing Page Konversi</div>
+        <div class="layanan-tagline">Halaman yang mengubah klik jadi leads</div>
+        <p class="layanan-desc">Iklan terbaik pun sia-sia jika landing page tidak mampu meyakinkan pengunjung. Kami bangun atau optimalkan halaman Anda agar setiap kunjungan berakhir dengan kontak masuk.</p>
+        <ul class="layanan-list">
+          <li>Desain landing page responsif & cepat</li>
+          <li>Copywriting persuasif berbasis psikologi pembelian</li>
+          <li>Integrasi tombol WhatsApp & form lead</li>
+          <li>Optimasi kecepatan halaman (Core Web Vitals)</li>
+          <li>Uji coba elemen CTA untuk maksimalkan konversi</li>
+        </ul>
+      </div>
+      <div class="layanan-card">
+        <div class="layanan-icon">🔍</div>
+        <div class="layanan-name">Audit & Konsultasi Iklan</div>
+        <div class="layanan-tagline">Temukan kebocoran budget Anda</div>
+        <p class="layanan-desc">Sudah punya kampanye tapi hasilnya tidak sesuai ekspektasi? Kami bedah seluruh akun Anda, identifikasi masalah, dan berikan roadmap perbaikan yang konkret.</p>
+        <ul class="layanan-list">
+          <li>Audit menyeluruh struktur kampanye</li>
+          <li>Analisis kata kunci & search term report</li>
+          <li>Evaluasi landing page & user journey</li>
+          <li>Laporan audit tertulis + sesi konsultasi 1 jam</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROSES -->
+<section id="proses">
+  <div class="container">
+    <p class="section-eyebrow">Cara Kerja</p>
+    <h2 class="section-title">Dari Konsultasi hingga<br><span class="accent">Leads Masuk dalam 3 Hari</span></h2>
+    <p class="section-sub">Proses terstruktur yang diarahkan untuk satu tujuan: profit bisnis Anda.</p>
+    <div class="proses-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Konsultasi & Analisis Bisnis</div>
+        <p class="step-desc">Kami pahami bisnis, target pasar, kompetitor, dan tujuan utama Anda. Gratis, tanpa komitmen.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">Riset Kata Kunci & Strategi</div>
+        <p class="step-desc">Kami gali kata kunci dengan niat beli tinggi dan susun strategi kampanye yang tepat sasaran.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Setup & Konfigurasi Akun</div>
+        <p class="step-desc">Struktur kampanye, iklan, tracking, dan landing page dikonfigurasi secara profesional.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-title">Iklan Tayang & Monitoring</div>
+        <p class="step-desc">Iklan diluncurkan. Kami pantau aktif setiap hari dan lakukan optimasi berbasis data real.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-title">Laporan & Skala Pertumbuhan</div>
+        <p class="step-desc">Laporan transparan mingguan. Budget dialokasikan ulang ke kata kunci yang terbukti menghasilkan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HASIL -->
+<section id="hasil">
+  <div class="container">
+    <p class="section-eyebrow">Hasil Nyata</p>
+    <h2 class="section-title">Bukan Janji — Ini<br><span class="accent">Angka Riil Klien Kami</span></h2>
+    <p class="section-sub">Setiap angka berasal dari akun Google Ads klien yang kami kelola secara nyata.</p>
+    <div class="result-grid">
+      <div class="result-card">
+        <div class="result-metric">78%</div>
+        <div class="result-label">Penurunan biaya per lead (CPL) dalam 60 hari pertama</div>
+        <span class="result-sector">Kontraktor Bangunan</span>
+      </div>
+      <div class="result-card">
+        <div class="result-metric">4.2×</div>
+        <div class="result-label">Peningkatan ROAS setelah restrukturisasi kampanye</div>
+        <span class="result-sector">Dealer Kendaraan</span>
+      </div>
+      <div class="result-card">
+        <div class="result-metric">120+</div>
+        <div class="result-label">Leads per bulan dari nol dengan budget Rp 5 juta</div>
+        <span class="result-sector">Klinik Kecantikan</span>
+      </div>
+      <div class="result-card">
+        <div class="result-metric">Rp 1.800</div>
+        <div class="result-label">Biaya per klik turun dari Rp 12.000 dengan manual bid strategy</div>
+        <span class="result-sector">Jasa Pengiriman</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COCOK -->
+<section id="cocok">
+  <div class="container">
+    <p class="section-eyebrow">Siapa yang Kami Bantu</p>
+    <h2 class="section-title">Cocok untuk Bisnis<br><span style="color:#fbbc04">yang Bergantung pada Google</span></h2>
+    <p class="section-sub">Jika calon pelanggan Anda mencari di Google sebelum membeli, kami bisa mendatangkan mereka ke bisnis Anda.</p>
+    <div class="cocok-grid">
+      <div class="cocok-item"><div class="icon">🏗️</div><div class="label">Kontraktor & Renovasi</div></div>
+      <div class="cocok-item"><div class="icon">🏡</div><div class="label">Properti & Developer</div></div>
+      <div class="cocok-item"><div class="icon">🚗</div><div class="label">Dealer Mobil & Motor</div></div>
+      <div class="cocok-item"><div class="icon">💆</div><div class="label">Klinik & Kesehatan</div></div>
+      <div class="cocok-item"><div class="icon">🎓</div><div class="label">Lembaga Pendidikan</div></div>
+      <div class="cocok-item"><div class="icon">✈️</div><div class="label">Tour, Travel & Umroh</div></div>
+      <div class="cocok-item"><div class="icon">⚖️</div><div class="label">Jasa Hukum & Konsultan</div></div>
+      <div class="cocok-item"><div class="icon">🔧</div><div class="label">Jasa Servis & Reparasi</div></div>
+      <div class="cocok-item"><div class="icon">🏭</div><div class="label">Manufaktur & B2B</div></div>
+      <div class="cocok-item"><div class="icon">🛒</div><div class="label">E-commerce & Toko Online</div></div>
+      <div class="cocok-item"><div class="icon">🍽️</div><div class="label">F&B & Kuliner</div></div>
+      <div class="cocok-item"><div class="icon">💻</div><div class="label">Software & SaaS</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HARGA -->
+<section id="harga">
+  <div class="container">
+    <p class="section-eyebrow">Paket Harga</p>
+    <h2 class="section-title">Investasi Transparan,<br><span class="accent">Hasil yang Terukur</span></h2>
+    <p class="section-sub">Tidak ada biaya tersembunyi. Anda tahu persis apa yang Anda bayar dan apa yang Anda dapatkan.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">Starter</div>
+        <div class="price-tagline">Untuk bisnis yang baru mulai Google Ads</div>
+        <div class="price-amount">Rp 500.000<span> sekali</span></div>
+        <p class="price-note-small">Tidak termasuk budget iklan</p>
+        <ul class="price-includes">
+          <li>Setup struktur kampanye penelusuran</li>
+          <li>Riset & konfigurasi kata kunci</li>
+          <li>Copywriting 3 variasi iklan</li>
+          <li>Setup Google Conversion Tracking</li>
+          <li>1× sesi review via WhatsApp</li>
+          <li class="no">Optimasi & monitoring bulanan</li>
+          <li class="no">A/B testing iklan</li>
+        </ul>
+        <a href="https://wa.me/6282127644597?text=Halo%20Adrian,%20saya%20mau%20tanya%20paket%20Starter" target="_blank" class="price-cta outline">Tanya Sekarang</a>
+      </div>
+      <div class="price-card featured">
+        <div class="featured-badge">🔥 Paling Diminati</div>
+        <div class="price-name">Full Manage</div>
+        <div class="price-tagline">Pengelolaan aktif untuk hasil konsisten</div>
+        <div class="price-amount">Rp 1.000.000<span> /bulan</span></div>
+        <p class="price-note-small">Tidak termasuk budget iklan</p>
+        <ul class="price-includes">
+          <li>Setup + optimasi kampanye penuh</li>
+          <li>Monitoring & bid adjustment harian</li>
+          <li>A/B testing iklan setiap 2 minggu</li>
+          <li>Optimasi Quality Score & Ad Rank</li>
+          <li>Laporan performa mingguan</li>
+          <li>Konsultasi WhatsApp tanpa batas</li>
+          <li>Review & rekomendasi landing page</li>
+        </ul>
+        <a href="https://wa.me/6282127644597?text=Halo%20Adrian,%20saya%20mau%20mulai%20paket%20Full%20Manage" target="_blank" class="price-cta primary">Mulai Sekarang</a>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Growth</div>
+        <div class="price-tagline">Untuk bisnis yang siap skalakan iklan</div>
+        <div class="price-amount">Rp 1.500.000<span> /bulan</span></div>
+        <p class="price-note-small">Tidak termasuk budget iklan</p>
+        <ul class="price-includes">
+          <li>Semua yang ada di Full Manage</li>
+          <li>Kampanye Google Maps Sponsored</li>
+          <li>Remarketing campaign</li>
+          <li>Pembuatan / optimasi landing page</li>
+          <li>Laporan performa detail + call tracking</li>
+          <li>Sesi strategi bulanan 1 jam via Zoom</li>
+          <li>Priority WhatsApp response</li>
+        </ul>
+        <a href="https://wa.me/6282127644597?text=Halo%20Adrian,%20saya%20tertarik%20paket%20Growth" target="_blank" class="price-cta outline">Konsultasi Dulu</a>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:28px;font-size:13px;color:var(--gray)">Semua paket tanpa kontrak jangka panjang. Bisa mulai kapan saja, bisa berhenti kapan saja.</p>
+  </div>
+</section>
+
+<!-- GARANSI -->
+<section id="garansi">
+  <div class="container">
+    <p class="section-eyebrow" style="color:#fbbc04">Garansi Kami</p>
+    <h2 class="section-title">Kami Bertanggung Jawab<br>atas Setiap Rupiah Budget Anda</h2>
+    <div class="garansi-box">
+      <div class="garansi-icon">🛡️</div>
+      <div class="garansi-title">Komitmen Transparansi Penuh</div>
+      <p class="garansi-desc">Kami tidak bersembunyi di balik laporan yang rumit. Anda berhak tahu persis ke mana budget iklan Anda pergi dan apa hasilnya.</p>
+      <ul class="garansi-points">
+        <li>Laporan mingguan yang bisa dibaca siapa pun, bukan hanya spesialis</li>
+        <li>Akses langsung ke dashboard Google Ads Anda — tidak ada yang disembunyikan</li>
+        <li>Jika dalam 30 hari tidak ada perbaikan signifikan, kami evaluasi strategi tanpa biaya tambahan</li>
+        <li>Tidak ada lock-in kontrak — kepercayaan Anda adalah kontrak terbaik kami</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONI -->
+<section id="testimoni">
+  <div class="container">
+    <p class="section-eyebrow">Hasil Klien</p>
+    <h2 class="section-title">Mereka Sudah Rasakan<br><span class="accent">Bedanya</span></h2>
+    <p class="section-sub">Bukan klaim kosong — ini cerita nyata dari pemilik bisnis yang iklannya kami kelola.</p>
+    <div class="testi-scroll">
+      <div class="testi-card">
+        <div class="testi-top">
+          <img class="testi-avatar" src="https://ui-avatars.com/api/?name=Budi+Santoso&background=1a73e8&color=fff" alt="">
+          <div><div class="testi-name">Budi Santoso</div><div class="testi-biz">Developer Properti Syariah, Bandung</div></div>
+          <img class="g-logo" src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="">
+        </div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Sebelumnya saya kelola sendiri, budget Rp 10 juta/bulan tapi leads masuk paling 5–6 orang dan tidak jelas kualitasnya. Setelah Adrian yang pegang, bulan pertama langsung 40+ leads dan 3 di antaranya closing."</p>
+        <div class="testi-result">📈 CPL turun 82% · 3 closing dalam 30 hari pertama</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-top">
+          <img class="testi-avatar" src="https://ui-avatars.com/api/?name=Siti+Aminah&background=ea4335&color=fff" alt="">
+          <div><div class="testi-name">Siti Aminah</div><div class="testi-biz">Klinik Kecantikan, Jakarta Selatan</div></div>
+          <img class="g-logo" src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="">
+        </div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Landing page saya diaudit dan diubah strukturnya. Ternyata itulah yang bikin orang tidak jadi WA. Setelah dioptimasi, rasio konversi naik drastis. Sekarang rata-rata 15 booking per minggu dari iklan."</p>
+        <div class="testi-result">📈 Booking naik 4× lipat dalam 6 minggu</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-top">
+          <img class="testi-avatar" src="https://ui-avatars.com/api/?name=Hendra+Wijaya&background=34a853&color=fff" alt="">
+          <div><div class="testi-name">Hendra Wijaya</div><div class="testi-biz">Jasa Kontraktor, Surabaya</div></div>
+          <img class="g-logo" src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="">
+        </div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Dulu iklan saya muncul untuk kata kunci yang tidak nyambung. Habis diaudit, ternyata tidak ada negative keyword sama sekali. Setelah dibenahi, biaya per klik turun dari Rp 15.000 ke Rp 2.800."</p>
+        <div class="testi-result">📉 Biaya per klik turun 81% · Leads meningkat 3×</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-top">
+          <img class="testi-avatar" src="https://ui-avatars.com/api/?name=Andika+Pratama&background=f57c00&color=fff" alt="">
+          <div><div class="testi-name">Andika Pratama</div><div class="testi-biz">Dealer Mobil, Yogyakarta</div></div>
+          <img class="g-logo" src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="">
+        </div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Google Maps Ads-nya luar biasa efektif. Showroom kami sekarang muncul konsisten di posisi atas saat orang cari dealer di kota kami. Test drive appointments naik 200% dibanding bulan sebelumnya."</p>
+        <div class="testi-result">📍 Dominasi lokal Google Maps · Appointment +200%</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-top">
+          <img class="testi-avatar" src="https://ui-avatars.com/api/?name=Rina+Marlina&background=9c27b0&color=fff" alt="">
+          <div><div class="testi-name">Rina Marlina</div><div class="testi-biz">Lembaga Kursus Bahasa, Semarang</div></div>
+          <img class="g-logo" src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="">
+        </div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Saya pernah coba agency besar dan hasilnya mengecewakan. Dengan Adrian, saya bisa langsung WhatsApp dan dapat jawaban dalam hitungan menit. Hasilnya jauh lebih terukur dan terpercaya."</p>
+        <div class="testi-result">📊 ROAS 4.1× · 90 pendaftar baru dalam 2 bulan</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-top">
+          <img class="testi-avatar" src="https://ui-avatars.com/api/?name=Dewi+Sartika&background=00897b&color=fff" alt="">
+          <div><div class="testi-name">Dewi Sartika</div><div class="testi-biz">Travel Umroh, Bandung</div></div>
+          <img class="g-logo" src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="">
+        </div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Bisnis travel umroh persaingannya sangat ketat di Google. Adrian berhasil membuat iklan kami muncul konsisten di posisi atas dengan harga per klik yang wajar. Kuota jamaah bulan ini terisi penuh."</p>
+        <div class="testi-result">🕌 Kuota terpenuhi 100% · CPC turun 60%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <p class="section-eyebrow">FAQ</p>
+    <h2 class="section-title">Pertanyaan yang Sering<br><span class="accent">Ditanyakan</span></h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Berapa budget iklan minimum yang direkomendasikan? <span class="chevron">⌄</span></div>
+        <div class="faq-a">Untuk hasil yang terukur, kami rekomendasikan minimal Rp 3–5 juta per bulan untuk budget iklan (di luar biaya jasa). Budget lebih besar membuka lebih banyak peluang, namun kami akan selalu menyesuaikan strategi dengan kapasitas Anda.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Berapa lama sampai iklan mulai menghasilkan leads? <span class="chevron">⌄</span></div>
+        <div class="faq-a">Iklan biasanya mulai tayang dalam 3 hari kerja setelah setup selesai. Leads pertama umumnya mulai masuk di minggu pertama. Hasil yang stabil terasa di minggu ke-3 hingga ke-4, karena algoritma Google butuh waktu belajar dari data konversi.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Apakah saya punya kontrol penuh atas akun iklan saya? <span class="chevron">⌄</span></div>
+        <div class="faq-a">Ya, 100%. Akun Google Ads tetap atas nama dan milik Anda. Kami hanya diberi akses pengelola. Anda bisa memantau langsung kapan saja. Tidak ada yang disembunyikan dari Anda.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Apa bedanya jasa ini dengan agency besar? <span class="chevron">⌄</span></div>
+        <div class="faq-a">Di agency besar, akun Anda biasanya dikelola staf junior yang pegang puluhan klien sekaligus. Di sini, Anda berinteraksi langsung dengan spesialis yang mengerjakan kampanye Anda. Respon lebih cepat, perhatian lebih penuh, dan hasilnya lebih terasa karena strategi dibuat khusus untuk bisnis Anda.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Bagaimana jika saya belum punya landing page? <span class="chevron">⌄</span></div>
+        <div class="faq-a">Kami bisa membuatkan landing page khusus yang dioptimasi untuk konversi iklan Google. Ini bagian dari paket Growth, atau bisa ditambahkan sebagai layanan terpisah. Landing page yang baik adalah kunci — tanpanya, bahkan iklan terbaik pun tidak akan optimal.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Apakah ada kontrak jangka panjang? <span class="chevron">⌄</span></div>
+        <div class="faq-a">Tidak ada. Layanan kami berjalan bulanan tanpa kontrak pengikatan. Anda bebas melanjutkan atau menghentikan kapan saja. Kami percaya hasil kerja kami yang akan membuat Anda ingin terus bermitra.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BOTTOM -->
+<section id="cta-bottom">
+  <div class="container">
+    <h2>Siap Ubah Budget Iklan Jadi<br>Mesin Penghasil Leads Berkualitas?</h2>
+    <p>Mulai dengan konsultasi gratis 30 menit. Kami analisis kondisi iklan Anda saat ini dan tunjukkan di mana peluang terbesar untuk meningkatkan konversi dan profit.</p>
+    <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap">
+      <a href="https://wa.me/6282127644597?text=Halo%20Adrian,%20saya%20mau%20konsultasi%20gratis%20Google%20Ads%20untuk%20bisnis%20saya" target="_blank" class="btn-yellow">💬 Konsultasi Gratis via WhatsApp</a>
+    </div>
+    <p class="cta-note">Tidak ada kewajiban. Tidak ada tekanan. Hanya percakapan jujur tentang iklan Anda.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Dominasi <span>Pasar</span></div>
+      <p class="footer-desc">Spesialis Google Ads dengan fokus pada optimasi konversi dan kualitas leads — untuk mendorong pertumbuhan profit bisnis Anda secara nyata dan terukur. Dikelola oleh <strong style="color:#fff">Adrian Ads Spesialis</strong>.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Layanan</div>
+      <ul class="footer-links">
+        <li><a href="#layanan">Setup & Struktur Kampanye</a></li>
+        <li><a href="#layanan">Full Manage & Optimasi</a></li>
+        <li><a href="#layanan">Landing Page Konversi</a></li>
+        <li><a href="#layanan">Audit & Konsultasi Iklan</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Hubungi Kami</div>
+      <ul class="footer-links">
+        <li>+62 821-2764-4597</li>
+        <li>info@adrianads.id</li>
+        <li>Senin – Sabtu, 09.00–17.00 WIB</li>
+        <li><a href="https://wa.me/6282127644597" target="_blank">Chat WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2024 Dominasi Pasar by Adrian Ads Spesialis. All Rights Reserved. Jasa Google Ads & Optimasi Konversi Profesional.</div>
+</footer>
+
+<!-- WA FLOAT -->
+<div class="wa-float">
+  <a href="https://wa.me/6282127644597?text=Halo%20Adrian,%20saya%20mau%20konsultasi%20Google%20Ads" target="_blank">💬 Chat WhatsApp</a>
+</div>
+
+<script>
+  function toggleFaq(el) {
+    el.parentElement.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
