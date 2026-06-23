@@ -10,6 +10,58 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* VIDEO TESTIMONI */
+.video-testi-wrap{
+  margin-bottom:40px;
+}
+
+.video-testi-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+
+.video-card{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:16px;
+  overflow:hidden;
+  backdrop-filter:blur(8px);
+}
+
+.video-card iframe{
+  width:100%;
+  aspect-ratio:9/16;
+  border:none;
+  display:block;
+}
+
+.video-caption{
+  padding:14px;
+  text-align:center;
+  color:#fff;
+  font-size:14px;
+  font-weight:600;
+}
+
+.video-badge{
+  display:inline-block;
+  background:var(--gold);
+  color:var(--green-deep);
+  font-weight:700;
+  font-size:12px;
+  padding:6px 14px;
+  border-radius:30px;
+  margin-bottom:14px;
+}
+
+@media(max-width:768px){
+  .video-testi-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+  
 :root {
   --green-deep:  #1B4D2E;
   --green-mid:   #2D7A4F;
@@ -531,6 +583,47 @@ footer {
     <h2 class="sec-h2">Ini Bukan Janji — Ini Pengalaman Nyata Keluarga Mereka</h2>
     <p class="sec-sub">Screenshot chat asli dari pelanggan yang berbagi kabar baik kepada kami 🙏</p>
 
+<div class="video-testi-wrap">
+
+  <div style="text-align:center;margin-bottom:24px;">
+    <span class="video-badge">🎥 TESTIMONI VIDEO ASLI</span>
+    <h3 style="color:#fff;font-size:28px;margin-bottom:10px;">
+      Lihat Pengalaman Konsumen AntaPro Bharata
+    </h3>
+    <p style="color:rgba(255,255,255,.75);max-width:650px;margin:auto;">
+      Testimoni langsung dari pengguna dan keluarga pasien yang telah menggunakan AntaPro Bharata.
+    </p>
+  </div>
+
+  <div class="video-testi-grid">
+
+    <div class="video-card">
+      <iframe
+        src="https://www.youtube.com/embed/v-aMnax9SqI"
+        title="Testimoni Antapro 1"
+        allowfullscreen>
+      </iframe>
+      <div class="video-caption">
+        Testimoni Pengguna AntaPro Bharata
+      </div>
+    </div>
+
+    <div class="video-card">
+      <iframe
+        src="https://www.youtube.com/embed/_jQ2cxzUyLs"
+        title="Testimoni Antapro 2"
+        allowfullscreen>
+      </iframe>
+      <div class="video-caption">
+        Pengalaman Keluarga Pasien Stroke
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+    
     <div class="testi-grid">
 
       <div class="testi-card">
