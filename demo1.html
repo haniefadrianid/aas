@@ -4,9 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DTT PUAS - Biro Perjalanan Umrah Terpercaya</title>
+  
+  <!-- 1. OPTIMASI KONEKSI (Preconnect ke CDN luar agar jabat tangan jaringan lebih cepat) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <!-- 2. OPTIMASI RENDER-BLOCKING (Memuat CSS non-kritikal secara asinkron menggunakan trik preload) -->
+  <!-- Google Fonts -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700;800&display=swap"></noscript>
+
+  <!-- Tabler Icons -->
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"></noscript>
+
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-    
+    /* CSS internal Anda tetap berada di sini agar di-render instan tanpa memblokir halaman */
     * {
       margin: 0;
       padding: 0;
@@ -18,7 +32,8 @@
     }
 
     .site {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      /* Menggunakan fallback font sistem selagi Plus Jakarta Sans diunduh asinkron */
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       color: #1a1a1a;
       background: #fff;
     }
@@ -945,7 +960,6 @@
         font-size: 1.5rem;
       }
 
-      /* Perbaikan Struktur Galeri di HP (Menjadi 2 Kolom) */
       .galeri-grid {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: auto;
@@ -978,8 +992,6 @@
       }
     }
   </style>
-  <!-- Menyisipkan CSS ikon ikon (Tabler Icons jika digunakan di web Anda) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
 <body>
 
@@ -1074,7 +1086,7 @@
         <div class="galeri-overlay"><span class="galeri-caption">Manasik Umrah</span></div>
       </div>
       <div class="galeri-item">
-        <div class="galeri-placeholder"><div class="gi">🌙</div><p>City Tour<br>Umrah Plus</p></div>
+        <div class="galeri-placeholder"><div class="gi"></div><p>City Tour<br>Umrah Plus</p></div>
         <div class="galeri-overlay"><span class="galeri-caption">City Tour — Umrah Plus</span></div>
       </div>
     </div>
@@ -1134,7 +1146,7 @@
           <div class="testi-img-wrap"><div style="font-size:3rem;">🤲</div><div class="testi-photo-badge">BM</div></div>
           <div class="testi-body">
             <div class="testi-stars">★★★★★</div>
-            <div class="testi-text">"Alhamdulillah, pelayanan DTT PUAS sangat memuaskan. Pembimbing sabar dan hotel dekat Masjidil Haram. Kami sekeluarga sangat puas dan insyaAllah akan mendaftar lagi."</div>
+            <div class="testi-text">"Alhamdulillah, pelayanan DTT PUAS sangat memuaskan. Pembimbing sabar and hotel dekat Masjidil Haram. Kami sekeluarga sangat puas dan insyaAllah akan mendaftar lagi."</div>
             <div class="testi-meta"><div class="testi-name">Bapak H. Mahmud</div><div class="testi-info">Yogyakarta · Umrah Reguler, Maret 2024</div></div>
           </div>
         </div>
@@ -1245,7 +1257,7 @@
   <!-- FINAL CTA -->
   <section style="background:linear-gradient(135deg,#1a4a2e,#0a2318);padding:4rem 2rem;text-align:center;">
     <div style="max-width:600px;margin:0 auto;">
-      <div style="font-size:2rem;margin-bottom:0.75rem;">🤲</div>
+      <div style="font-size:2rem;margin-bottom:0.75rem;"></div>
       <h2 style="font-size:1.75rem;font-weight:800;color:#fff;margin-bottom:0.75rem;letter-spacing:-0.5px;">Siap Memulai Perjalanan Ibadah Anda?</h2>
       <p style="color:rgba(255,255,255,0.65);margin-bottom:2rem;font-size:15px;line-height:1.7;">Konsultasikan kebutuhan Anda dengan tim kami. Gratis, tanpa paksaan, dan kami bantu temukan paket yang paling sesuai.</p>
       <a class="btn-wa-primary" href="https://wa.me/628172829245" style="font-size:17px;padding:18px 32px;display:inline-flex;"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i> Konsultasi Gratis via WhatsApp</a>
