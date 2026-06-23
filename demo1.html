@@ -8,17 +8,19 @@
   <!-- 1. OPTIMASI KONEKSI (Preconnect ke CDN luar agar jabat tangan jaringan lebih cepat) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <!-- OPSI PERBAIKAN: Preload file font Tabler Icons langsung untuk mengatasi font-display -->
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/fonts/tabler-icons.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- 2. OPTIMASI RENDER-BLOCKING (Memuat CSS non-kritikal secara asinkron menggunakan trik preload) -->
   <!-- Google Fonts -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700;800&display=swap"></noscript>
 
-  <!-- Tabler Icons -->
+  <!-- Tabler Icons CSS -->
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"></noscript>
-
   <style>
     /* CSS internal Anda tetap berada di sini agar di-render instan tanpa memblokir halaman */
     * {
