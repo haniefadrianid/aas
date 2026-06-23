@@ -1,0 +1,447 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  .site{font-family:'Plus Jakarta Sans',sans-serif;color:#1a1a1a;background:#fff;}
+
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:68px;background:rgba(255,255,255,0.97);border-bottom:1px solid #f0ede8;position:sticky;top:0;z-index:100;}
+  .nav-logo{font-size:20px;font-weight:800;color:#1a3a2a;letter-spacing:-0.5px;}
+  .nav-logo span{color:#2d7a4f;}
+  .nav-links{display:flex;gap:1.5rem;list-style:none;}
+  .nav-links a{font-size:14px;color:#444;text-decoration:none;font-weight:500;}
+  .nav-wa{display:flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:10px 18px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none;box-shadow:0 2px 8px rgba(37,211,102,0.35);}
+
+  .hero{background:linear-gradient(135deg,#0a2318 0%,#1a4a2e 50%,#0f3321 100%);padding:5rem 2rem 4rem;text-align:center;}
+  .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(45,122,79,0.3);border:1px solid rgba(45,122,79,0.5);color:#7de8a8;font-size:13px;font-weight:600;padding:6px 16px;border-radius:100px;margin-bottom:1.5rem;}
+  .hero-badge::before{content:'●';font-size:8px;color:#4ade80;}
+  .hero h1{font-size:3rem;font-weight:800;color:#fff;line-height:1.15;letter-spacing:-1px;margin-bottom:1.25rem;max-width:700px;margin-left:auto;margin-right:auto;}
+  .hero h1 em{color:#7de8a8;font-style:normal;}
+  .hero p{font-size:1.05rem;color:rgba(255,255,255,0.7);max-width:560px;margin:0 auto 2rem;line-height:1.7;}
+  .hero-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem;}
+  .btn-wa-primary{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:16px 28px;border-radius:10px;font-size:16px;font-weight:700;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,0.45);}
+  .btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.3);padding:15px 24px;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;}
+  .trust-strip{display:flex;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:12px;max-width:680px;margin:0 auto;overflow:hidden;}
+  .trust-item{flex:1;padding:1.2rem 1rem;text-align:center;border-right:1px solid rgba(255,255,255,0.08);}
+  .trust-item:last-child{border-right:none;}
+  .trust-num{font-size:1.6rem;font-weight:800;color:#7de8a8;}
+  .trust-label{font-size:11px;color:rgba(255,255,255,0.55);margin-top:2px;line-height:1.4;}
+
+  .sec{padding:4rem 2rem;max-width:1100px;margin:0 auto;}
+  .sec-eyebrow{font-size:12px;font-weight:700;color:#2d7a4f;letter-spacing:1px;text-transform:uppercase;margin-bottom:0.4rem;}
+  .sec-title{font-size:1.8rem;font-weight:800;color:#1a3a2a;letter-spacing:-0.5px;}
+  .sec-sub{color:#666;font-size:1rem;margin-top:0.5rem;line-height:1.6;margin-bottom:2rem;}
+
+  .paket-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;}
+  .paket-card{border:1.5px solid #e8f0eb;border-radius:14px;overflow:hidden;background:#fff;}
+  .paket-card.featured{border-color:#2d7a4f;box-shadow:0 4px 20px rgba(45,122,79,0.15);}
+  .paket-header{background:#f6fbf8;padding:1.25rem 1.25rem 1rem;border-bottom:1px solid #e8f0eb;}
+  .paket-badge{display:inline-block;background:#e8f5ee;color:#1a4a2e;font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;margin-bottom:0.6rem;}
+  .paket-badge.hot{background:#fef3e8;color:#9a3d0a;}
+  .paket-name{font-size:1.1rem;font-weight:800;color:#1a3a2a;}
+  .paket-nights{font-size:13px;color:#666;margin-top:2px;}
+  .paket-price-area{padding:1rem 1.25rem;}
+  .paket-from{font-size:12px;color:#888;}
+  .paket-price{font-size:1.7rem;font-weight:800;color:#2d7a4f;line-height:1.1;}
+  .paket-price sup{font-size:14px;font-weight:600;}
+  .paket-features{padding:0 1.25rem 1rem;list-style:none;}
+  .paket-features li{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:#444;padding:5px 0;border-bottom:1px solid #f5f5f5;}
+  .paket-features li:last-child{border-bottom:none;}
+  .paket-features li::before{content:'✓';color:#2d7a4f;font-weight:700;flex-shrink:0;}
+  .paket-cta{display:flex;align-items:center;justify-content:center;gap:8px;background:#25D366;color:#fff;margin:0 1.25rem 1.25rem;border-radius:8px;padding:12px;font-size:14px;font-weight:700;text-decoration:none;}
+
+  .galeri-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:10px;}
+  .galeri-item{border-radius:12px;overflow:hidden;position:relative;background:#d4eadb;cursor:pointer;}
+  .galeri-item.big{grid-row:span 2;}
+  .galeri-placeholder{width:100%;height:100%;min-height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#d4eadb,#e8f5ee);color:#2d7a4f;gap:6px;padding:1rem;}
+  .galeri-placeholder .gi{font-size:32px;}
+  .galeri-placeholder p{font-size:11px;font-weight:600;text-align:center;color:#1a4a2e;}
+  .galeri-img{width:100%;height:100%;object-fit:cover;display:block;}
+  .galeri-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,35,24,0.75) 0%,transparent 55%);display:flex;align-items:flex-end;padding:0.75rem;}
+  .galeri-caption{color:#fff;font-size:12px;font-weight:600;}
+
+  .ig-link-row{display:flex;align-items:center;gap:1rem;padding:1.25rem 1.5rem;background:#f9f9f9;border:1px solid #e8e8e8;border-radius:12px;margin-top:1.5rem;flex-wrap:wrap;}
+  .ig-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;flex-shrink:0;}
+  .ig-text{flex:1;min-width:150px;}
+  .ig-text strong{font-size:14px;color:#1a1a1a;display:block;}
+  .ig-text span{font-size:13px;color:#666;}
+  .ig-btn{background:#1a3a2a;color:#fff;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap;}
+
+  .stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-bottom:2rem;}
+  .stat-card{background:#f6fbf8;border:1px solid #d4eadb;border-radius:12px;padding:1.25rem 1rem;text-align:center;}
+  .stat-num{font-size:2rem;font-weight:800;color:#1a4a2e;letter-spacing:-1px;}
+  .stat-label{font-size:12px;color:#5a7a65;margin-top:3px;font-weight:500;}
+
+  .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;}
+  .why-card{background:#fff;border:1.5px solid #e8f0eb;border-radius:12px;padding:1.5rem;}
+  .why-icon{width:44px;height:44px;background:#e8f5ee;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:1rem;}
+  .why-title{font-size:15px;font-weight:700;color:#1a3a2a;margin-bottom:6px;}
+  .why-desc{font-size:13px;color:#666;line-height:1.6;}
+
+  .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;}
+  .testi-card{border:1.5px solid #e8f0eb;border-radius:14px;overflow:hidden;background:#fff;}
+  .testi-img-wrap{position:relative;height:180px;overflow:hidden;background:linear-gradient(135deg,#1a4a2e,#2d7a4f);display:flex;align-items:center;justify-content:center;}
+  .testi-img-wrap img{width:100%;height:100%;object-fit:cover;}
+  .testi-photo-badge{position:absolute;bottom:-20px;left:1.25rem;width:48px;height:48px;border-radius:50%;border:3px solid #fff;background:#1a4a2e;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:#7de8a8;}
+  .testi-body{padding:1.75rem 1.25rem 1.25rem;}
+  .testi-stars{color:#f59e0b;font-size:14px;letter-spacing:2px;margin-bottom:0.6rem;}
+  .testi-text{font-size:13px;color:#444;line-height:1.7;font-style:italic;margin-bottom:1rem;}
+  .testi-meta{border-top:1px solid #f0ede8;padding-top:0.75rem;}
+  .testi-name{font-size:14px;font-weight:700;color:#1a3a2a;}
+  .testi-info{font-size:12px;color:#888;margin-top:2px;}
+
+  /* FAQ */
+  .faq-list{display:flex;flex-direction:column;gap:10px;}
+  .faq-item{border:1.5px solid #e8f0eb;border-radius:12px;overflow:hidden;background:#fff;}
+  .faq-q{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.25rem;cursor:pointer;font-size:15px;font-weight:600;color:#1a3a2a;gap:1rem;user-select:none;}
+  .faq-q:hover{background:#f9fdf9;}
+  .faq-icon{font-size:18px;color:#2d7a4f;flex-shrink:0;transition:transform 0.25s;}
+  .faq-a{padding:0 1.25rem;max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.2s;}
+  .faq-a p{font-size:14px;color:#555;line-height:1.75;padding-bottom:1.1rem;}
+  .faq-item.open .faq-a{max-height:300px;padding-top:0;}
+  .faq-item.open .faq-icon{transform:rotate(45deg);}
+  .faq-item.open{border-color:#2d7a4f;}
+  .faq-item.open .faq-q{color:#2d7a4f;}
+
+  /* PETA */
+  .kantor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:2rem;}
+  .kantor-card{background:#fff;border:1.5px solid #e8f0eb;border-radius:12px;padding:1.25rem;cursor:pointer;transition:all 0.2s;}
+  .kantor-card:hover,.kantor-card.active{border-color:#2d7a4f;box-shadow:0 4px 16px rgba(45,122,79,0.12);}
+  .kantor-card.active{background:#f6fbf8;}
+  .kantor-badge{font-size:11px;font-weight:700;color:#2d7a4f;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.5rem;}
+  .kantor-name{font-size:15px;font-weight:700;color:#1a3a2a;margin-bottom:0.4rem;}
+  .kantor-addr{font-size:13px;color:#666;line-height:1.6;margin-bottom:0.75rem;}
+  .kantor-phone{font-size:13px;font-weight:600;color:#2d7a4f;text-decoration:none;display:flex;align-items:center;gap:6px;}
+  .map-frame{border-radius:14px;overflow:hidden;border:1.5px solid #e8f0eb;height:340px;background:#e8f0eb;position:relative;}
+  .map-iframe{width:100%;height:100%;border:none;display:block;}
+  .map-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;text-align:center;padding:2rem;}
+  .map-placeholder .mp-icon{font-size:40px;}
+  .map-placeholder p{font-size:14px;color:#5a7a65;line-height:1.6;}
+  .map-placeholder a{display:inline-flex;align-items:center;gap:6px;background:#2d7a4f;color:#fff;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none;}
+
+  .legalitas-row{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;background:#f6fbf8;border:1px solid #d4eadb;border-radius:12px;padding:1.5rem;margin-bottom:2rem;}
+  .legal-badge{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #d4eadb;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;color:#1a4a2e;}
+
+  .sticky-wa{position:fixed;bottom:24px;right:24px;z-index:1000;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:14px 22px;border-radius:50px;text-decoration:none;font-size:15px;font-weight:700;box-shadow:0 6px 28px rgba(37,211,102,0.5);animation:pulse-wa 2.5s infinite;}
+  @keyframes pulse-wa{0%,100%{box-shadow:0 6px 28px rgba(37,211,102,0.5);}50%{box-shadow:0 6px 36px rgba(37,211,102,0.75),0 0 0 8px rgba(37,211,102,0.1);}}
+
+  .footer{background:#0a2318;color:rgba(255,255,255,0.6);padding:3rem 2rem;text-align:center;}
+  .footer-logo{font-size:22px;font-weight:800;color:#fff;margin-bottom:0.5rem;}
+  .footer-logo span{color:#7de8a8;}
+  .footer-offices{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin:1.5rem 0;}
+  .footer-office{font-size:12.5px;max-width:200px;line-height:1.6;}
+  .footer-office strong{color:#fff;display:block;margin-bottom:4px;}
+  .footer-copy{font-size:12px;border-top:1px solid rgba(255,255,255,0.08);padding-top:1.5rem;}
+  .divider{height:1px;background:#f0ede8;}
+  .sec-wrap-bg{background:#f9fdf9;padding:4rem 2rem;}
+</style>
+
+<div class="site">
+
+  <nav class="nav">
+    <div class="nav-logo">DTT<span>PUAS</span></div>
+    <ul class="nav-links">
+      <li><a href="#">Umrah</a></li>
+      <li><a href="#">Haji</a></li>
+      <li><a href="#">Paket Wisata</a></li>
+      <li><a href="#">FAQ</a></li>
+    </ul>
+    <a class="nav-wa" href="https://wa.me/628172829245">
+      <i class="ti ti-brand-whatsapp" aria-hidden="true"></i> Konsultasi Gratis
+    </a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-badge">Terdaftar Resmi Kemenag RI</div>
+    <h1>Ibadah Umrah <em>Tenang & Puas</em><br>Bersama DTT PUAS</h1>
+    <p>Ratusan jamaah telah kami berangkatkan dengan layanan amanah, pembimbing berpengalaman, dan harga terbaik dari Yogyakarta & Jawa Tengah.</p>
+    <div class="hero-ctas">
+      <a class="btn-wa-primary" href="https://wa.me/628172829245"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i> Konsultasi WhatsApp Sekarang</a>
+      <a class="btn-secondary" href="#">Lihat Paket Umrah <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+    </div>
+    <div class="trust-strip">
+      <div class="trust-item"><div class="trust-num">500+</div><div class="trust-label">Jamaah Diberangkatkan</div></div>
+      <div class="trust-item"><div class="trust-num">10+</div><div class="trust-label">Tahun Pengalaman</div></div>
+      <div class="trust-item"><div class="trust-num">4.9★</div><div class="trust-label">Rating Jamaah</div></div>
+      <div class="trust-item"><div class="trust-num">Resmi</div><div class="trust-label">Izin Kemenag RI</div></div>
+    </div>
+  </section>
+
+  <!-- PAKET -->
+  <div class="sec">
+    <div class="sec-eyebrow">Paket Umrah 2024/1446H</div>
+    <div class="sec-title">Pilih Paket Sesuai Kebutuhan Anda</div>
+    <div class="sec-sub">Semua paket sudah termasuk visa, tiket, hotel, dan pembimbing ibadah berpengalaman.</div>
+    <div class="paket-grid">
+      <div class="paket-card">
+        <div class="paket-header"><span class="paket-badge">Promo</span><div class="paket-name">Umrah Promo</div><div class="paket-nights">9 hari / 8 malam</div></div>
+        <div class="paket-price-area"><div class="paket-from">Mulai dari</div><div class="paket-price"><sup>Rp</sup>22 Juta</div></div>
+        <ul class="paket-features"><li>Tiket PP Jakarta – Jeddah</li><li>Hotel bintang 3 dekat Masjidil Haram</li><li>Visa umrah resmi</li><li>Pembimbing ibadah bersertifikat</li><li>Makan 3x sehari</li></ul>
+        <a class="paket-cta" href="https://wa.me/628172829245?text=Assalamualaikum, saya ingin tanya paket Umrah Promo"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i> Tanya Paket Ini</a>
+      </div>
+      <div class="paket-card featured">
+        <div class="paket-header" style="background:#eef8f2;"><span class="paket-badge hot">🔥 Terpopuler</span><div class="paket-name">Umrah Reguler</div><div class="paket-nights">12 hari / 11 malam</div></div>
+        <div class="paket-price-area"><div class="paket-from">Mulai dari</div><div class="paket-price"><sup>Rp</sup>28 Juta</div></div>
+        <ul class="paket-features"><li>Tiket PP Jakarta – Jeddah</li><li>Hotel bintang 4 dekat Masjidil Haram</li><li>Visa umrah resmi</li><li>Pembimbing ibadah senior</li><li>Makan 3x sehari + snack</li><li>Kunjungan situs bersejarah</li></ul>
+        <a class="paket-cta" href="https://wa.me/628172829245?text=Assalamualaikum, saya ingin tanya paket Umrah Reguler"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i> Tanya Paket Ini</a>
+      </div>
+      <div class="paket-card">
+        <div class="paket-header"><span class="paket-badge">Plus Tour</span><div class="paket-name">Umrah Plus</div><div class="paket-nights">14 hari / 13 malam</div></div>
+        <div class="paket-price-area"><div class="paket-from">Mulai dari</div><div class="paket-price"><sup>Rp</sup>38 Juta</div></div>
+        <ul class="paket-features"><li>Tiket PP + ekstensi wisata</li><li>Hotel bintang 4–5</li><li>Visa umrah resmi</li><li>City tour (Turki / Dubai / Aqsa)</li><li>Pembimbing ibadah & wisata</li><li>Full board + snack premium</li></ul>
+        <a class="paket-cta" href="https://wa.me/628172829245?text=Assalamualaikum, saya ingin tanya paket Umrah Plus"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i> Tanya Paket Ini</a>
+      </div>
+    </div>
+    <div style="margin-top:1.5rem;text-align:center;padding:1.25rem;background:#f6fbf8;border-radius:10px;border:1px dashed #a8d4b8;">
+      <span style="font-size:14px;color:#1a4a2e;font-weight:600;">Tidak ada paket yang cocok? </span>
+      <a href="https://wa.me/628172829245" style="color:#2d7a4f;font-weight:700;font-size:14px;">Hubungi kami untuk paket custom →</a>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- GALERI -->
+  <div class="sec">
+    <div class="sec-eyebrow">Momen Perjalanan Jamaah</div>
+    <div class="sec-title">Galeri DTT PUAS</div>
+    <div class="sec-sub">Dokumentasi perjalanan ibadah bersama jamaah kami di Tanah Suci.</div>
+    <div class="galeri-grid">
+      <div class="galeri-item big" style="min-height:340px;">
+        <div class="galeri-placeholder"><div class="gi">🕌</div><p>Jamaah Umrah DTT PUAS<br>di Masjidil Haram</p></div>
+        <div class="galeri-overlay"><span class="galeri-caption">Jamaah Umrah 2024</span></div>
+      </div>
+      <div class="galeri-item" style="min-height:162px;">
+        <div class="galeri-placeholder"><div class="gi">🤲</div><p>Berdoa di Raudhah<br>Madinah</p></div>
+        <div class="galeri-overlay"><span class="galeri-caption">Raudhah — Masjid Nabawi</span></div>
+      </div>
+      <div class="galeri-item" style="min-height:162px;">
+        <div class="galeri-placeholder"><div class="gi">✈️</div><p>Keberangkatan<br>dari Bandara</p></div>
+        <div class="galeri-overlay"><span class="galeri-caption">Keberangkatan Jamaah</span></div>
+      </div>
+      <div class="galeri-item" style="min-height:150px;">
+        <div class="galeri-placeholder"><div class="gi">📸</div><p>Foto Bersama<br>di Ka'bah</p></div>
+        <div class="galeri-overlay"><span class="galeri-caption">Di depan Ka'bah</span></div>
+      </div>
+      <div class="galeri-item" style="min-height:150px;">
+        <div class="galeri-placeholder"><div class="gi">🎓</div><p>Manasik Umrah<br>sebelum berangkat</p></div>
+        <div class="galeri-overlay"><span class="galeri-caption">Manasik Umrah</span></div>
+      </div>
+      <div class="galeri-item" style="min-height:150px;">
+        <div class="galeri-placeholder"><div class="gi">🌙</div><p>City Tour<br>Umrah Plus</p></div>
+        <div class="galeri-overlay"><span class="galeri-caption">City Tour — Umrah Plus</span></div>
+      </div>
+    </div>
+    <div class="ig-link-row">
+      <div class="ig-icon"><i class="ti ti-brand-instagram" aria-hidden="true"></i></div>
+      <div class="ig-text"><strong>Lihat lebih banyak momen jamaah kami</strong><span>Follow Instagram @dttpuasofficial untuk update keberangkatan & galeri terbaru</span></div>
+      <a class="ig-btn" href="https://www.instagram.com/dttpuasofficial" target="_blank"><i class="ti ti-brand-instagram" aria-hidden="true"></i> Buka Instagram</a>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- KEPERCAYAAN -->
+  <div class="sec-wrap-bg">
+  <div class="sec" style="padding-top:0;padding-bottom:0;">
+    <div class="sec-title">Dipercaya Ribuan Jamaah</div>
+    <div class="sec-sub">Legalitas resmi & rekam jejak yang dapat diverifikasi.</div>
+    <div class="legalitas-row">
+      <div class="legal-badge">🏛️ Terdaftar Kemenag RI</div>
+      <div class="legal-badge">🛡️ PPIU Berizin Resmi</div>
+      <div class="legal-badge">📋 PT Gema Arafah Wisata</div>
+      <div class="legal-badge">🕌 Berbasis Pesantren</div>
+    </div>
+    <div class="stats-row">
+      <div class="stat-card"><div class="stat-num">500+</div><div class="stat-label">Jamaah diberangkatkan</div></div>
+      <div class="stat-card"><div class="stat-num">10+</div><div class="stat-label">Tahun berpengalaman</div></div>
+      <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Kantor resmi Jawa</div></div>
+      <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Berangkat sesuai jadwal</div></div>
+    </div>
+  </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- KENAPA -->
+  <div class="sec">
+    <div class="sec-title">Kenapa Memilih DTT PUAS?</div>
+    <div class="sec-sub"></div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon">🕌</div><div class="why-title">Berbasis Pesantren</div><div class="why-desc">Didirikan di PP Islamic Centre Bin Baz, bimbingan ibadah sesuai Al-Qur'an dan Sunnah.</div></div>
+      <div class="why-card"><div class="why-icon">👨‍🏫</div><div class="why-title">Pembimbing Bersertifikat</div><div class="why-desc">Tersertifikasi Kemenag, berpengalaman, dan siap mendampingi selama di Tanah Suci.</div></div>
+      <div class="why-card"><div class="why-icon">💳</div><div class="why-title">Harga Transparan</div><div class="why-desc">Tidak ada biaya tersembunyi. Semua komponen sudah termasuk dalam harga paket.</div></div>
+      <div class="why-card"><div class="why-icon">📱</div><div class="why-title">Responsif 24 Jam</div><div class="why-desc">Tim siap merespons via WhatsApp kapan saja, termasuk saat jamaah di Tanah Suci.</div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- TESTIMONI BERGAMBAR -->
+  <div class="sec-wrap-bg">
+  <div class="sec" style="padding-top:0;padding-bottom:0;">
+    <div class="sec-eyebrow">Kata Mereka yang Sudah Berangkat</div>
+    <div class="sec-title">Testimoni Jamaah DTT PUAS</div>
+    <div class="sec-sub">Pengalaman nyata dari jamaah yang telah kami berangkatkan ke Tanah Suci.</div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-img-wrap"><div style="font-size:3rem;">🤲</div><div class="testi-photo-badge">BM</div></div>
+        <div class="testi-body">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-text">"Alhamdulillah, pelayanan DTT PUAS sangat memuaskan. Pembimbing sabar dan hotel dekat Masjidil Haram. Kami sekeluarga sangat puas dan insyaAllah akan mendaftar lagi."</div>
+          <div class="testi-meta"><div class="testi-name">Bapak H. Mahmud</div><div class="testi-info">Yogyakarta · Umrah Reguler, Maret 2024</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-img-wrap"><div style="font-size:3rem;">🕌</div><div class="testi-photo-badge">SF</div></div>
+        <div class="testi-body">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-text">"Proses pendaftaran mudah, tim sangat informatif. Bimbingan ibadah lengkap dari manasik hingga di Mekah. Sangat direkomendasikan untuk yang baru pertama kali umrah."</div>
+          <div class="testi-meta"><div class="testi-name">Ibu Siti Fatimah</div><div class="testi-info">Purwokerto · Umrah Plus, Januari 2024</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-img-wrap"><div style="font-size:3rem;">✈️</div><div class="testi-photo-badge">AR</div></div>
+        <div class="testi-body">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-text">"Harga terjangkau tapi kualitas tidak murahan. Hotel bagus, makanan halal, pembimbing hafal betul doa-doa ibadah. Terima kasih banyak DTT PUAS!"</div>
+          <div class="testi-meta"><div class="testi-name">Bp. Ahmad Rasyid</div><div class="testi-info">Sleman · Umrah Promo, Februari 2024</div></div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:1.5rem;text-align:center;">
+      <a href="https://wa.me/628172829245?text=Assalamualaikum, saya ingin tahu lebih lanjut tentang pengalaman jamaah DTT PUAS" style="font-size:14px;color:#2d7a4f;font-weight:700;text-decoration:none;">Baca lebih banyak cerita jamaah via WhatsApp →</a>
+    </div>
+  </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- FAQ -->
+  <div class="sec">
+    <div class="sec-eyebrow">Pertanyaan Umum</div>
+    <div class="sec-title">FAQ — Yang Sering Ditanyakan</div>
+    <div class="sec-sub">Belum menemukan jawaban? <a href="https://wa.me/628172829245" style="color:#2d7a4f;font-weight:700;">Tanya langsung via WhatsApp →</a></div>
+    <div class="faq-list" id="faqList">
+      <div class="faq-item">
+        <div class="faq-q"><span>Apakah DTT PUAS sudah berizin resmi dari Kemenag RI?</span><span class="faq-icon"><i class="ti ti-plus" aria-hidden="true"></i></span></div>
+        <div class="faq-a"><p>Ya, DTT PUAS beroperasi di bawah PT Gema Arafah Wisata yang telah terdaftar dan berizin resmi sebagai Penyelenggara Perjalanan Ibadah Umrah (PPIU) di Kementerian Agama RI. Nomor izin dapat dikonfirmasi langsung kepada tim kami.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Berapa biaya pendaftaran umrah dan apa saja yang sudah termasuk?</span><span class="faq-icon"><i class="ti ti-plus" aria-hidden="true"></i></span></div>
+        <div class="faq-a"><p>Harga paket mulai dari Rp 22 juta untuk paket promo (9 hari). Sudah termasuk tiket pesawat PP, akomodasi hotel, visa umrah, makan 3x sehari, pembimbing ibadah bersertifikat, dan transportasi selama di Tanah Suci. Tidak ada biaya tersembunyi.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Bagaimana cara mendaftar dan apa saja persyaratannya?</span><span class="faq-icon"><i class="ti ti-plus" aria-hidden="true"></i></span></div>
+        <div class="faq-a"><p>Pendaftaran bisa dilakukan langsung ke kantor kami atau via WhatsApp. Persyaratan umum: paspor aktif minimal 7 bulan, foto 4x6 latar putih, KTP & KK, surat mahram (untuk wanita di bawah 45 tahun tanpa suami), dan bukti vaksin meningitis.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Apakah ada program cicilan untuk pembayaran paket?</span><span class="faq-icon"><i class="ti ti-plus" aria-hidden="true"></i></span></div>
+        <div class="faq-a"><p>Ya, kami menyediakan program cicilan tanpa bunga untuk pendaftaran lebih awal. Dengan membayar DP mulai dari Rp 5 juta, kursi Anda sudah bisa diamankan. Sisa pembayaran dapat dicicil hingga H-30 keberangkatan. Hubungi kami untuk detail skema cicilan.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Apakah tersedia paket untuk lansia atau jamaah dengan kebutuhan khusus?</span><span class="faq-icon"><i class="ti ti-plus" aria-hidden="true"></i></span></div>
+        <div class="faq-a"><p>Tentu. Kami memiliki paket khusus lansia dengan fasilitas hotel yang lebih dekat ke Masjidil Haram, kursi roda bila dibutuhkan, serta pendamping khusus. Konsultasikan kondisi jamaah kepada tim kami agar kami siapkan solusi terbaik.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Kapan jadwal keberangkatan umrah terdekat?</span><span class="faq-icon"><i class="ti ti-plus" aria-hidden="true"></i></span></div>
+        <div class="faq-a"><p>Jadwal keberangkatan kami tersedia setiap bulan sepanjang tahun (kecuali masa haji). Kuota setiap keberangkatan terbatas. Hubungi tim kami via WhatsApp untuk mengetahui jadwal tersedia dan sisa kursi terkini.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PETA LOKASI KANTOR -->
+  <div class="sec">
+    <div class="sec-eyebrow">Temukan Kami</div>
+    <div class="sec-title">Lokasi Kantor DTT PUAS</div>
+    <div class="sec-sub">Kunjungi kantor kami atau konsultasi langsung via WhatsApp tanpa perlu datang.</div>
+    <div class="kantor-grid" id="kantorList">
+      <div class="kantor-card active" onclick="switchKantor(0)" data-lat="-7.8433" data-lng="110.4436" data-q="Pondok+Pesantren+Islamic+Centre+Bin+Baz+Bantul+Yogyakarta">
+        <div class="kantor-badge">Head Office</div>
+        <div class="kantor-name">Kantor Pusat</div>
+        <div class="kantor-addr">PP Islamic Centre Bin Baz, Jl. Wonosari KM 10, Bantul, Yogyakarta</div>
+        <a class="kantor-phone" href="tel:+628172829245"><i class="ti ti-phone" aria-hidden="true"></i> 0817-2829-245</a>
+      </div>
+      <div class="kantor-card" onclick="switchKantor(1)" data-lat="-7.7756" data-lng="110.4109" data-q="Jl+Raya+Tajem+Maguwoharjo+Sleman+Yogyakarta">
+        <div class="kantor-badge">Yogyakarta</div>
+        <div class="kantor-name">Kantor Yogyakarta</div>
+        <div class="kantor-addr">Jl. Raya Tajem No.42, Maguwoharjo, Sleman, DIY 55282</div>
+        <a class="kantor-phone" href="tel:+628172829245"><i class="ti ti-phone" aria-hidden="true"></i> 0817-2829-245</a>
+      </div>
+      <div class="kantor-card" onclick="switchKantor(2)" data-lat="-7.4218" data-lng="109.2414" data-q="Jl+Sri+Rahayu+Purwokerto+Selatan+Banyumas">
+        <div class="kantor-badge">Jawa Tengah</div>
+        <div class="kantor-name">Kantor Purwokerto</div>
+        <div class="kantor-addr">Jl. Sri Rahayu Kav 6-7, Purwokerto Selatan, Banyumas</div>
+        <a class="kantor-phone" href="tel:+628172829245"><i class="ti ti-phone" aria-hidden="true"></i> 0817-2829-245</a>
+      </div>
+    </div>
+    <div class="map-frame" id="mapFrame">
+      <iframe id="mapIframe" class="map-iframe"
+        src="https://maps.google.com/maps?q=Pondok+Pesantren+Islamic+Centre+Bin+Baz+Bantul+Yogyakarta&output=embed&z=15"
+        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        onerror="this.style.display='none';document.getElementById('mapFallback').style.display='flex'">
+      </iframe>
+      <div id="mapFallback" style="display:none;" class="map-placeholder">
+        <div class="mp-icon">🗺️</div>
+        <p>Klik tombol di bawah untuk melihat<br>lokasi kantor kami di Google Maps</p>
+        <a id="mapLink" href="https://maps.google.com/?q=Pondok+Pesantren+Islamic+Centre+Bin+Baz+Bantul" target="_blank">
+          <i class="ti ti-map-pin" aria-hidden="true"></i> Buka Google Maps
+        </a>
+      </div>
+    </div>
+    <div style="margin-top:1rem;text-align:center;">
+      <a href="https://wa.me/628172829245?text=Assalamualaikum, saya ingin berkunjung ke kantor DTT PUAS. Mohon konfirmasi jam operasional." style="font-size:14px;color:#2d7a4f;font-weight:700;text-decoration:none;"><i class="ti ti-clock" aria-hidden="true"></i> Konfirmasi kunjungan via WhatsApp sebelum datang →</a>
+    </div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <section style="background:linear-gradient(135deg,#1a4a2e,#0a2318);padding:4rem 2rem;text-align:center;">
+    <div style="max-width:600px;margin:0 auto;">
+      <div style="font-size:2rem;margin-bottom:0.75rem;">🤲</div>
+      <h2 style="font-size:1.75rem;font-weight:800;color:#fff;margin-bottom:0.75rem;letter-spacing:-0.5px;">Siap Memulai Perjalanan Ibadah Anda?</h2>
+      <p style="color:rgba(255,255,255,0.65);margin-bottom:2rem;font-size:15px;line-height:1.7;">Konsultasikan kebutuhan Anda dengan tim kami. Gratis, tanpa paksaan, dan kami bantu temukan paket yang paling sesuai.</p>
+      <a class="btn-wa-primary" href="https://wa.me/628172829245" style="font-size:17px;padding:18px 32px;display:inline-flex;"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i> Konsultasi Gratis via WhatsApp</a>
+      <p style="color:rgba(255,255,255,0.4);font-size:12px;margin-top:1rem;">⏱ Respon rata-rata di bawah 5 menit</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-logo">DTT<span>PUAS</span></div>
+    <div style="font-size:13px;margin-top:4px;color:rgba(255,255,255,0.45);">PT Gema Arafah Wisata · PPIU Berizin Kemenag RI</div>
+    <div class="footer-offices">
+      <div class="footer-office"><strong>Head Office</strong>PP Islamic Centre Bin Baz, Jl. Wonosari KM 10, Bantul, Yogyakarta</div>
+      <div class="footer-office"><strong>Kantor Yogyakarta</strong>Jl. Raya Tajem No.42, Maguwoharjo, Sleman, DIY</div>
+      <div class="footer-office"><strong>Kantor Jawa Tengah</strong>Jl. Sri Rahayu Kav 6-7, Purwokerto Selatan</div>
+    </div>
+    <div class="footer-copy">© 2024 PT Gema Arafah Wisata. All Rights Reserved.</div>
+  </footer>
+
+  <a class="sticky-wa" href="https://wa.me/628172829245">
+    <i class="ti ti-brand-whatsapp" aria-hidden="true" style="font-size:20px;"></i> Konsultasi WhatsApp
+  </a>
+
+</div>
+
+<script>
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      faqItems.forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  const kantors = [
+    { q: 'Pondok+Pesantren+Islamic+Centre+Bin+Baz+Bantul+Yogyakarta', gmaps: 'https://maps.google.com/?q=Pondok+Pesantren+Islamic+Centre+Bin+Baz+Bantul' },
+    { q: 'Jl+Raya+Tajem+Maguwoharjo+Sleman+Yogyakarta', gmaps: 'https://maps.google.com/?q=Jl+Raya+Tajem+Maguwoharjo+Sleman' },
+    { q: 'Jl+Sri+Rahayu+Purwokerto+Selatan+Banyumas', gmaps: 'https://maps.google.com/?q=Jl+Sri+Rahayu+Purwokerto+Selatan' }
+  ];
+
+  function switchKantor(idx) {
+    document.querySelectorAll('.kantor-card').forEach((c,i) => c.classList.toggle('active', i===idx));
+    const k = kantors[idx];
+    document.getElementById('mapIframe').src = `https://maps.google.com/maps?q=${k.q}&output=embed&z=15`;
+    document.getElementById('mapLink').href = k.gmaps;
+  }
+</script>
