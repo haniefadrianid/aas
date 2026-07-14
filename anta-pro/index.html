@@ -1,1 +1,555 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AntaPro Bharata — Herbal Pendukung Pemulihan Pasca Stroke | BPOM & Halal MUI</title>
+<meta name="description" content="Herbal ekstrak pegagan terdaftar BPOM untuk membantu melancarkan peredaran darah & mendukung pemulihan pasca stroke. Dipakai 1.000+ keluarga Indonesia. Konsultasi gratis via WhatsApp, bisa COD.">
+<meta property="og:title" content="AntaPro Bharata — Herbal Pendukung Pemulihan Pasca Stroke">
+<meta property="og:description" content="Terdaftar BPOM & Halal MUI. Dipakai 1.000+ keluarga Indonesia. Konsultasi gratis via WhatsApp.">
+<meta property="og:type" content="website">
+<style>
+:root{
+  --hijau:#1E4D3B;        /* hijau botani gelap — kepercayaan, herbal */
+  --hijau-muda:#2E6B52;
+  --krem:#F6F4EC;         /* kertas beras hangat */
+  --putih:#FFFFFF;
+  --kunyit:#B97A1B;       /* aksen kunyit — kehangatan keluarga */
+  --wa:#1FAF54;           /* hijau WhatsApp untuk CTA */
+  --wa-gelap:#178A42;
+  --tinta:#22302B;
+  --abu:#5C6B64;
+  --garis:#E3DFD2;
+  --radius:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  color:var(--tinta);background:var(--krem);line-height:1.65;font-size:17px;
+  padding-bottom:76px; /* ruang sticky CTA mobile */
+}
+h1,h2,h3,.display{font-family:Georgia,"Times New Roman",serif;line-height:1.25;color:var(--hijau)}
+img,svg{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--kunyit);margin-bottom:14px}
+section{padding:64px 0}
+.section-title{font-size:clamp(26px,4vw,38px);margin-bottom:14px;max-width:26ch}
+.section-lead{color:var(--abu);max-width:60ch;margin-bottom:36px}
+
+/* ---------- HEADER MINIMAL (tanpa menu = tanpa kebocoran) ---------- */
+header{background:var(--putih);border-bottom:1px solid var(--garis);position:sticky;top:0;z-index:50}
+.head-in{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;max-width:1040px;margin:0 auto}
+.brand{font-family:Georgia,serif;font-weight:700;font-size:19px;color:var(--hijau)}
+.brand small{display:block;font-family:inherit;font-size:11px;font-weight:400;color:var(--abu);letter-spacing:.06em}
+.head-cta{background:var(--wa);color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:10px 16px;border-radius:99px}
+.head-cta:hover{background:var(--wa-gelap)}
+
+/* ---------- HERO ---------- */
+.hero{background:linear-gradient(180deg,var(--putih) 0%,var(--krem) 100%);padding:56px 0 48px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+.hero h1{font-size:clamp(30px,4.6vw,46px);margin-bottom:18px}
+.hero h1 em{font-style:normal;color:var(--kunyit)}
+.hero p.sub{font-size:18px;color:var(--abu);margin-bottom:26px;max-width:52ch}
+.btn-wa{display:inline-flex;align-items:center;gap:10px;background:var(--wa);color:#fff;text-decoration:none;font-weight:800;font-size:17px;padding:16px 28px;border-radius:99px;box-shadow:0 6px 18px rgba(31,175,84,.35)}
+.btn-wa:hover{background:var(--wa-gelap)}
+.btn-note{font-size:13px;color:var(--abu);margin-top:12px}
+.hero-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.badge{background:var(--putih);border:1px solid var(--garis);border-radius:99px;padding:7px 14px;font-size:13px;font-weight:600;color:var(--hijau)}
+.hero-img{background:var(--putih);border:1px solid var(--garis);border-radius:var(--radius);padding:14px}
+.ph{background:repeating-linear-gradient(45deg,#EDEAE0,#EDEAE0 12px,#F3F1E8 12px,#F3F1E8 24px);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--abu);font-size:13px;text-align:center;padding:12px}
+
+/* ---------- SIGNATURE: JEJAK KEMAJUAN KECIL ---------- */
+.jejak{background:var(--hijau);color:#EDF3EF;padding:56px 0}
+.jejak h2{color:#fff;font-size:clamp(24px,3.6vw,34px);margin-bottom:8px}
+.jejak p.lead{color:#BFD3C8;max-width:58ch;margin-bottom:40px}
+.jejak-line{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.jejak-line::before{content:"";position:absolute;top:26px;left:12%;right:12%;height:2px;background:rgba(255,255,255,.25)}
+.langkah{text-align:center;padding:0 10px;position:relative}
+.langkah .dot{width:52px;height:52px;border-radius:50%;background:var(--kunyit);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:24px;position:relative;z-index:1;border:3px solid var(--hijau)}
+.langkah h3{color:#fff;font-size:16px;margin-bottom:6px;font-family:inherit;font-weight:700}
+.langkah p{font-size:14px;color:#BFD3C8}
+.jejak .catatan{margin-top:34px;font-size:13px;color:#9DB8AA;text-align:center}
+
+/* ---------- MASALAH ---------- */
+.kartu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.kartu{background:var(--putih);border:1px solid var(--garis);border-radius:var(--radius);padding:24px}
+.kartu .ikon{font-size:30px;margin-bottom:12px}
+.kartu h3{font-size:17px;font-family:inherit;font-weight:700;color:var(--tinta);margin-bottom:8px}
+.kartu p{font-size:15px;color:var(--abu)}
+.info-strip{margin-top:28px;background:#EEF4EF;border-left:4px solid var(--hijau-muda);border-radius:0 var(--radius) var(--radius) 0;padding:18px 22px;font-size:15.5px;color:var(--hijau);max-width:72ch}
+
+/* ---------- PRODUK ---------- */
+.produk{background:var(--putih)}
+.produk-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:start}
+.spek{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.spek div{background:var(--krem);border:1px solid var(--garis);border-radius:10px;padding:14px 16px}
+.spek b{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--kunyit);margin-bottom:4px}
+.spek span{font-size:15px;font-weight:600;color:var(--tinta)}
+.cara-pakai{margin-top:26px;background:var(--krem);border:1px dashed var(--kunyit);border-radius:var(--radius);padding:20px 22px}
+.cara-pakai h3{font-family:inherit;font-size:16px;font-weight:800;color:var(--tinta);margin-bottom:8px}
+.cara-pakai p{font-size:15px;color:var(--abu)}
+
+/* ---------- COCOK / TIDAK ---------- */
+.dua-kolom{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.list-box{background:var(--putih);border:1px solid var(--garis);border-radius:var(--radius);padding:26px}
+.list-box h3{font-family:inherit;font-size:17px;font-weight:800;margin-bottom:14px;color:var(--tinta)}
+.list-box ul{list-style:none}
+.list-box li{padding:7px 0 7px 30px;position:relative;font-size:15.5px;color:var(--abu)}
+.list-box.ya li::before{content:"✓";position:absolute;left:0;color:var(--wa);font-weight:800}
+.list-box.tidak li::before{content:"✕";position:absolute;left:0;color:#B4522F;font-weight:800}
+
+/* ---------- TESTIMONI ---------- */
+.testi{background:var(--putih)}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.t-kartu{background:var(--krem);border:1px solid var(--garis);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;gap:12px}
+.t-kartu .bintang{color:var(--kunyit);letter-spacing:3px;font-size:15px}
+.t-kartu blockquote{font-size:15.5px;color:var(--tinta);font-style:italic}
+.t-kartu .nama{font-size:13.5px;color:var(--abu)}
+.t-kartu .nama b{color:var(--tinta)}
+.t-disclaimer{margin-top:22px;font-size:13px;color:var(--abu);max-width:76ch}
+
+/* ---------- VIDEO TESTIMONI (click-to-load, hemat speed) ---------- */
+.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.vid{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--garis);background:#000;aspect-ratio:16/9;cursor:pointer;padding:0;width:100%}
+.vid img,.vid .poster-ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vid .poster-ph{display:flex;align-items:center;justify-content:center;color:#cfd8d2;font-size:13px;text-align:center;background:linear-gradient(160deg,#1E4D3B,#0F2A20);padding:16px}
+.vid .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(31,175,84,.95);display:flex;align-items:center;justify-content:center;z-index:2;transition:transform .15s}
+.vid:hover .play{transform:translate(-50%,-50%) scale(1.08)}
+.vid .play::before{content:"";display:block;border-style:solid;border-width:12px 0 12px 20px;border-color:transparent transparent transparent #fff;margin-left:5px}
+.vid iframe,.vid video{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vid-caption{font-size:14px;color:var(--abu);margin-top:10px}
+.vid-caption b{color:var(--tinta)}
+
+/* ---------- HARGA ---------- */
+.harga{background:var(--hijau)}
+.harga .section-title,.harga .section-lead{color:#fff}
+.harga .section-lead{color:#BFD3C8}
+.paket-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}
+.paket{background:var(--putih);border-radius:var(--radius);padding:30px;display:flex;flex-direction:column}
+.paket.unggulan{outline:3px solid var(--kunyit);position:relative}
+.pita{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--kunyit);color:#fff;font-size:12px;font-weight:800;letter-spacing:.08em;padding:6px 16px;border-radius:99px;white-space:nowrap}
+.paket h3{font-family:inherit;font-size:18px;font-weight:800;color:var(--tinta);margin-bottom:4px}
+.coret{color:var(--abu);text-decoration:line-through;font-size:15px}
+.angka{font-family:Georgia,serif;font-size:38px;color:var(--hijau);font-weight:700;margin:2px 0 2px}
+.per{font-size:13.5px;color:var(--abu);margin-bottom:16px}
+.paket ul{list-style:none;margin:6px 0 22px;flex:1}
+.paket li{padding:6px 0 6px 28px;position:relative;font-size:15px;color:var(--tinta)}
+.paket li::before{content:"✓";position:absolute;left:0;color:var(--wa);font-weight:800}
+.hemat{background:#FDF6EA;border:1px solid #EAD9B8;border-radius:10px;padding:12px 14px;font-size:14px;color:#7A5510;margin-bottom:16px}
+.paket .btn-wa{justify-content:center;text-align:center}
+.aman{font-size:13px;color:var(--abu);text-align:center;margin-top:12px}
+.urgensi{margin-top:26px;text-align:center;color:#F3E3C3;font-size:14.5px}
+
+/* ---------- GARANSI ---------- */
+.garansi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+
+/* ---------- LANGKAH ORDER ---------- */
+.order-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:step}
+.order-step{background:var(--putih);border:1px solid var(--garis);border-radius:var(--radius);padding:26px;position:relative}
+.order-step::before{counter-increment:step;content:counter(step);font-family:Georgia,serif;font-size:34px;color:var(--kunyit);font-weight:700;display:block;margin-bottom:8px}
+.order-step h3{font-family:inherit;font-size:16px;font-weight:800;color:var(--tinta);margin-bottom:6px}
+.order-step p{font-size:14.5px;color:var(--abu)}
+
+/* ---------- FAQ ---------- */
+.faq details{background:var(--putih);border:1px solid var(--garis);border-radius:12px;margin-bottom:12px;overflow:hidden}
+.faq summary{cursor:pointer;font-weight:700;font-size:16px;padding:18px 22px;list-style:none;position:relative;color:var(--tinta)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:20px;top:14px;font-size:22px;color:var(--kunyit)}
+.faq details[open] summary::after{content:"–"}
+.faq .isi{padding:0 22px 20px;font-size:15.5px;color:var(--abu)}
+
+/* ---------- CTA AKHIR ---------- */
+.akhir{background:var(--putih);text-align:center}
+.akhir .section-title{margin-left:auto;margin-right:auto}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--tinta);color:#B9C3BE;padding:36px 0;font-size:13.5px}
+footer .wrap{display:grid;gap:14px}
+footer b{color:#fff}
+
+/* ---------- STICKY CTA MOBILE ---------- */
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--putih);border-top:1px solid var(--garis);padding:10px 16px;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.sticky-cta .harga-kecil{font-size:13px;color:var(--abu)}
+.sticky-cta .harga-kecil b{display:block;font-size:16px;color:var(--hijau)}
+.sticky-cta .btn-wa{padding:12px 20px;font-size:15px;box-shadow:none}
+
+@media(max-width:840px){
+  .hero-grid,.produk-grid,.paket-grid,.dua-kolom{grid-template-columns:1fr}
+  .hero-grid{gap:28px}
+  .hero-img{order:-1;max-width:420px;margin:0 auto}
+  .jejak-line{grid-template-columns:1fr 1fr;gap:26px 0}
+  .jejak-line::before{display:none}
+  .order-grid{grid-template-columns:1fr}
+  section{padding:48px 0}
+  .paket.unggulan{margin-top:16px}
+}
+@media(min-width:841px){
+  .sticky-cta{display:none}
+  body{padding-bottom:0}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER: hanya logo + 1 CTA. Tidak ada menu = tidak ada jalan keluar -->
+<header>
+  <div class="head-in">
+    <div class="brand">AntaPro Bharata<small>Herbal Terdaftar BPOM · Halal MUI</small></div>
+    <a class="head-cta" href="https://wa.me/6282137101661?text=Halo%2C%20saya%20ingin%20konsultasi%20tentang%20AntaPro%20untuk%20keluarga%20saya" rel="nofollow">💬 Konsultasi Gratis</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="atas">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Untuk keluarga yang merawat penderita stroke</span>
+      <h1>Bantu Ayah &amp; Ibu Melewati Masa Pemulihan, <em>Selangkah Demi Selangkah</em></h1>
+      <p class="sub">Merawat orang tua pasca stroke itu berat — melihatnya kesulitan miring, berdiri, atau bicara, sementara Anda hanya bisa menemani. <strong>AntaPro Bharata</strong>, herbal ekstrak pegagan terdaftar BPOM, membantu melancarkan peredaran darah untuk mendukung proses pemulihan yang sedang dijalani keluarga Anda.</p>
+      <a class="btn-wa" href="https://wa.me/6282137101661?text=Halo%2C%20saya%20ingin%20konsultasi%20kondisi%20keluarga%20saya%20sebelum%20memesan%20AntaPro" rel="nofollow">💬 Ceritakan Kondisi Keluarga Anda — Gratis</a>
+      <p class="btn-note">Respon cepat · Tanpa kewajiban membeli · Pengiriman &amp; COD ke seluruh Indonesia</p>
+      <div class="hero-badges">
+        <span class="badge">✅ BPOM TR223041501</span>
+        <span class="badge">✅ Halal MUI</span>
+        <span class="badge">✅ Dipakai 1.000+ keluarga</span>
+      </div>
+    </div>
+    <div class="hero-img">
+      <!-- GANTI: foto produk asli, format WebP, beri width & height eksplisit -->
+      <div class="ph" style="aspect-ratio:4/3">GANTI DENGAN FOTO PRODUK<br>(WebP, maks 80KB, width &amp; height diisi)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIGNATURE: JEJAK KEMAJUAN KECIL ============ -->
+<section class="jejak">
+  <div class="wrap">
+    <h2>Pemulihan Tidak Datang Sekaligus. Ia Datang Lewat Momen-Momen Kecil.</h2>
+    <p class="lead">Keluarga-keluarga yang kami dampingi bercerita tentang momen yang sama — momen kecil yang membuat seisi rumah menangis bahagia:</p>
+    <div class="jejak-line">
+      <div class="langkah"><div class="dot">🥄</div><h3>Pegang sendok sendiri</h3><p>Pertama kali makan tanpa disuapi lagi</p></div>
+      <div class="langkah"><div class="dot">🛏️</div><h3>Miring tanpa dibantu</h3><p>Tidur lebih nyenyak, perawat lebih tenang</p></div>
+      <div class="langkah"><div class="dot">🪑</div><h3>Duduk lalu berdiri</h3><p>Mulai berani menapak dengan dipegangi</p></div>
+      <div class="langkah"><div class="dot">🚶</div><h3>Melangkah lagi</h3><p>Latihan jalan, sedikit demi sedikit</p></div>
+    </div>
+    <p class="catatan">Kemajuan setiap orang berbeda, tergantung kondisi, usia, terapi, dan konsistensi. Herbal ini mendukung — bukan menggantikan — terapi dan pengobatan dokter.</p>
+  </div>
+</section>
+
+<!-- ============ MASALAH ============ -->
+<section id="masalah">
+  <div class="wrap">
+    <span class="eyebrow">Kondisi yang tidak boleh dibiarkan</span>
+    <h2 class="section-title">Gejala Sisa Stroke Membebani Seisi Rumah — dan Waktu Terus Berjalan</h2>
+    <p class="section-lead">Stroke meninggalkan gejala sisa yang berat, bukan hanya bagi penderita tapi bagi seluruh keluarga yang merawat. Semakin lama masa pemulihan berjalan tanpa dukungan yang tepat, semakin berat perjuangannya.</p>
+    <div class="kartu-grid">
+      <div class="kartu"><div class="ikon">🦽</div><h3>Sulit Bergerak</h3><p>Satu sisi tubuh lemah — untuk miring di kasur pun harus dibantu.</p></div>
+      <div class="kartu"><div class="ikon">🦶</div><h3>Kaki &amp; Tangan Lemas</h3><p>Tenaga di anggota gerak berkurang, latihan terasa lambat kemajuannya.</p></div>
+      <div class="kartu"><div class="ikon">🗣️</div><h3>Bicara Pelo</h3><p>Kata-kata sulit keluar. Beliau frustrasi, keluarga ikut sedih.</p></div>
+      <div class="kartu"><div class="ikon">😰</div><h3>Takut Ditinggal Sendiri</h3><p>Tidak bisa ke kamar mandi sendiri — selalu harus ada yang menjaga.</p></div>
+    </div>
+    <div class="info-strip">💡 <strong>Sirkulasi darah yang lancar ke otak dan saraf</strong> adalah salah satu faktor penting dalam masa pemulihan pasca stroke. Karena itu, mendukung kelancaran peredaran darah menjadi bagian yang tidak boleh dilewatkan — di samping terapi dan kontrol rutin ke dokter.</div>
+  </div>
+</section>
+
+<!-- ============ PRODUK ============ -->
+<section class="produk" id="solusi">
+  <div class="wrap produk-grid">
+    <div>
+      <!-- GANTI: 2-3 foto produk & kemasan, WebP + lazy -->
+      <div class="ph" style="aspect-ratio:1/1;margin-bottom:14px">FOTO PRODUK UTAMA (WebP, lazy)</div>
+      <div class="ph" style="aspect-ratio:5/2">FOTO KEMASAN + NOMOR BPOM TERLIHAT</div>
+    </div>
+    <div>
+      <span class="eyebrow">Solusi pendamping pemulihan</span>
+      <h2 class="section-title">AntaPro Bharata — Herbal Pegagan Pilihan 1.000+ Keluarga Indonesia</h2>
+      <p class="section-lead" style="margin-bottom:8px">Diformulasikan dari <strong>ekstrak Centella asiatica (pegagan)</strong> — tanaman yang secara tradisional digunakan untuk membantu memperlancar peredaran darah. Peredaran darah yang lancar mendukung tubuh menjalani masa pemulihan pasca stroke dengan lebih baik, berdampingan dengan terapi dan obat dari dokter.</p>
+      <div class="spek">
+        <div><b>Kandungan Aktif</b><span>Ekstrak pegagan 500&nbsp;mg / kapsul</span></div>
+        <div><b>Khasiat Tradisional</b><span>Membantu memperlancar peredaran darah</span></div>
+        <div><b>Legalitas</b><span>BPOM TR223041501 — cek mandiri di cekbpom.pom.go.id</span></div>
+        <div><b>Sertifikasi</b><span>Halal MUI</span></div>
+        <div><b>Isi</b><span>50 kapsul per botol (± 8 hari konsumsi)</span></div>
+        <div><b>Pendampingan</b><span>Tim kami siap menjawab pertanyaan selama konsumsi</span></div>
+      </div>
+      <div class="cara-pakai">
+        <h3>📋 Aturan Pakai</h3>
+        <p>3× sehari, 2 kapsul, dikonsumsi rutin. Tetap lanjutkan obat dan terapi dari dokter — herbal ini adalah pendamping, bukan pengganti. Bila sedang mengonsumsi obat dokter, konsultasikan jadwal konsumsinya dengan dokter atau apoteker Anda.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COCOK / TIDAK COCOK ============ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Kejujuran di awal lebih baik</span>
+    <h2 class="section-title">Produk Ini Cocok untuk Siapa?</h2>
+    <div class="dua-kolom">
+      <div class="list-box ya">
+        <h3>✔ Sangat cocok jika keluarga Anda:</h3>
+        <ul>
+          <li>Sedang menjalani masa pemulihan pasca stroke (ringan maupun berat)</li>
+          <li>Sudah/sedang menjalani terapi &amp; kontrol dokter, ingin dukungan tambahan</li>
+          <li>Ingin ikhtiar herbal yang legal (BPOM) dan halal</li>
+          <li>Butuh pendampingan &amp; tempat bertanya selama proses konsumsi</li>
+        </ul>
+      </div>
+      <div class="list-box tidak">
+        <h3>✘ Sebaiknya konsultasi dokter dulu jika:</h3>
+        <ul>
+          <li>Pasien dalam kondisi darurat / stroke akut — segera ke IGD, jangan tunda</li>
+          <li>Sedang hamil atau menyusui</li>
+          <li>Memiliki gangguan hati atau ginjal berat</li>
+          <li>Berencana menghentikan obat dokter — jangan pernah hentikan tanpa izin dokter</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONI ============ -->
+<section class="testi" id="testimoni">
+  <div class="wrap">
+    <span class="eyebrow">Cerita dari keluarga</span>
+    <h2 class="section-title">Kabar Baik yang Mereka Bagikan kepada Kami</h2>
+    <p class="section-lead">Pesan-pesan WhatsApp asli dari keluarga yang menemani proses pemulihan orang tercintanya.</p>
+    <div class="testi-grid">
+      <div class="t-kartu">
+        <span class="bintang">★★★★★</span>
+        <blockquote>"Mamah saya setelah rutin minum sebotol mulai ada perubahan. Sisi badan yang lemah mulai bisa digerakkan sedikit-sedikit."</blockquote>
+        <span class="nama"><b>Fendi</b> · menemani ibunda, konsumsi botol pertama</span>
+      </div>
+      <div class="t-kartu">
+        <span class="bintang">★★★★★</span>
+        <blockquote>"Alhamdulillah sudah mulai latihan berdiri dan belajar jalan. Besok obatnya habis, saya mau lanjut pesan lagi."</blockquote>
+        <span class="nama"><b>Tosin</b> · melakukan pemesanan ulang</span>
+      </div>
+      <div class="t-kartu">
+        <span class="bintang">★★★★★</span>
+        <blockquote>"Kaki nenek saya ada kemajuan semenjak rutin konsumsi. Awalnya tidak bisa jalan, sekarang mulai bisa sedikit-sedikit."</blockquote>
+        <span class="nama"><b>Cucu pasien</b> · pembelian ketiga</span>
+      </div>
+      <div class="t-kartu">
+        <span class="bintang">★★★★★</span>
+        <blockquote>"Kondisi awal tidak bisa bangun, jalan harus dipegangi. Sekarang sudah mulai berjalan dengan latihan rutin."</blockquote>
+        <span class="nama"><b>Bunga</b> · mengirimkan video kemajuan ayahnya</span>
+      </div>
+      <div class="t-kartu">
+        <span class="bintang">★★★★★</span>
+        <blockquote>"Ibu saya ada perubahan walau sedikit. Kemarin untuk miring saja harus dibantu, sekarang sudah mulai ada pergerakan."</blockquote>
+        <span class="nama"><b>Anak pasien</b> · minggu-minggu awal konsumsi</span>
+      </div>
+      <div class="t-kartu">
+        <span class="bintang">★★★★★</span>
+        <blockquote>"Pelayanannya sabar, saya banyak tanya soal kondisi bapak sebelum beli. Dijawab semua, tidak dipaksa order."</blockquote>
+        <span class="nama"><b>Pelanggan</b> · konsultasi sebelum membeli</span>
+      </div>
+    </div>
+    <p class="t-disclaimer">* Disarikan dari percakapan WhatsApp pelanggan (nama disingkat demi privasi). Hasil setiap orang berbeda tergantung kondisi, usia, terapi yang dijalani, dan konsistensi. Testimoni bukan jaminan hasil. Selalu konsultasikan kondisi medis dengan dokter.</p>
+  </div>
+</section>
+
+<!-- ============ VIDEO TESTIMONI ============ -->
+<section id="video" style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">Lihat dengan mata Anda sendiri</span>
+    <h2 class="section-title">Video Asli dari Keluarga Pelanggan Kami</h2>
+    <p class="section-lead">Direkam dan dikirim sendiri oleh keluarga pasien — bukan aktor, bukan skenario. Klik untuk memutar.</p>
+    <div class="video-grid">
+
+      <!-- CARA PAKAI (pilih salah satu per video):
+           A) YouTube  : isi data-yt dengan ID video (contoh: data-yt="dQw4w9WgXcQ")
+           B) MP4 lokal: isi data-mp4 dengan path file (contoh: data-mp4="/video/testi1.mp4")
+           Ganti .poster-ph dengan <img src="poster-testi1.webp" width="640" height="360"
+           loading="lazy" alt="..."> memakai frame dari videonya (maks 40KB). -->
+
+      <div>
+        <button class="vid" type="button" data-yt="GANTI_ID_YOUTUBE_1" aria-label="Putar video testimoni 1">
+          <span class="poster-ph">GANTI: poster video 1<br>(WebP dari frame video, maks 40KB)</span>
+          <span class="play"></span>
+        </button>
+        <p class="vid-caption"><b>Latihan berdiri pertama</b> — dikirim keluarga pasien setelah rutin konsumsi &amp; terapi</p>
+      </div>
+
+      <div>
+        <button class="vid" type="button" data-yt="GANTI_ID_YOUTUBE_2" aria-label="Putar video testimoni 2">
+          <span class="poster-ph">GANTI: poster video 2</span>
+          <span class="play"></span>
+        </button>
+        <p class="vid-caption"><b>Mulai melangkah lagi</b> — kemajuan minggu ke-3 yang dibagikan sang anak</p>
+      </div>
+
+      <div>
+        <button class="vid" type="button" data-mp4="GANTI_PATH_VIDEO_3.mp4" aria-label="Putar video testimoni 3">
+          <span class="poster-ph">GANTI: poster video 3</span>
+          <span class="play"></span>
+        </button>
+        <p class="vid-caption"><b>Ucapan terima kasih keluarga</b> — direkam saat pesanan ketiga</p>
+      </div>
+
+    </div>
+    <p class="t-disclaimer">* Video dipublikasikan atas izin keluarga pelanggan. Pengalaman individual dapat berbeda; hasil dipengaruhi kondisi, terapi yang dijalani, dan konsistensi. Bukan pengganti nasihat medis.</p>
+  </div>
+</section>
+
+<!-- ============ HARGA ============ -->
+<section class="harga" id="harga">
+  <div class="wrap">
+    <span class="eyebrow" style="color:#E8C685">Penawaran batch bulan ini</span>
+    <h2 class="section-title">Mulai Dampingi Pemulihannya Hari Ini</h2>
+    <p class="section-lead">Harga promo berlaku selama stok batch bulan ini masih tersedia. Setelah batch habis, harga kembali normal.</p>
+    <div class="paket-grid">
+
+      <div class="paket">
+        <h3>Paket Coba — 1 Botol</h3>
+        <span class="coret">Harga normal Rp 350.000</span>
+        <div class="angka">Rp 275.000</div>
+        <div class="per">per botol · 50 kapsul @500 mg · ± 8 hari konsumsi</div>
+        <ul>
+          <li>Herbal pendukung kelancaran peredaran darah</li>
+          <li>Pendampingan tim kami selama konsumsi</li>
+          <li>Produk resmi BPOM TR223041501</li>
+          <li>Bersertifikat Halal MUI</li>
+        </ul>
+        <a class="btn-wa" href="https://wa.me/6282137101661?text=Halo%2C%20saya%20mau%20pesan%20AntaPro%201%20botol%20(Rp275.000)" rel="nofollow">Pesan 1 Botol via WhatsApp</a>
+        <p class="aman">🔒 Transaksi aman · Produk original · Bisa COD seluruh Indonesia</p>
+      </div>
+
+      <div class="paket unggulan">
+        <span class="pita">PALING BANYAK DIPILIH KELUARGA</span>
+        <h3>Paket Pemulihan — 2 Botol</h3>
+        <span class="coret">Harga normal Rp 550.000 / paket</span>
+        <div class="angka">Rp 510.000</div>
+        <div class="per">per paket (2 botol) · hemat Rp 40.000 · ± 16 hari konsumsi</div>
+        <div class="hemat">🎁 Stok tidak terputus di tengah proses — banyak keluarga memilih paket ini agar konsumsi tetap konsisten.</div>
+        <ul>
+          <li>Semua manfaat paket 1 botol</li>
+          <li>Hemat Rp 40.000 dibanding beli satuan</li>
+          <li>Konsumsi lebih konsisten = evaluasi lebih jelas</li>
+          <li>Prioritas pengiriman di hari yang sama*</li>
+        </ul>
+        <a class="btn-wa" href="https://wa.me/6282137101661?text=Halo%2C%20saya%20mau%20pesan%20Paket%20Pemulihan%20AntaPro%202%20botol%20(Rp510.000)" rel="nofollow">Pesan Paket 2 Botol via WhatsApp</a>
+        <p class="aman">🔒 Transaksi aman · Produk original · Bisa COD seluruh Indonesia</p>
+      </div>
+
+    </div>
+    <p class="urgensi">⏳ Stok batch bulan ini terbatas. Jika halaman ini masih tayang, promo masih berlaku. <span style="opacity:.8">*Pesanan sebelum pukul 15.00 WIB.</span></p>
+  </div>
+</section>
+
+<!-- ============ GARANSI ============ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Belanja tanpa was-was</span>
+    <h2 class="section-title">Jaminan Kami untuk Keluarga Anda</h2>
+    <div class="garansi-grid kartu-grid">
+      <div class="kartu"><div class="ikon">🛡️</div><h3>100% Original</h3><p>Langsung dari distributor resmi. Verifikasi mandiri nomor BPOM TR223041501 di cekbpom.pom.go.id.</p></div>
+      <div class="kartu"><div class="ikon">📦</div><h3>Garansi Kirim Ulang</h3><p>Paket rusak atau hilang dalam pengiriman? Kami kirim ulang tanpa biaya tambahan.</p></div>
+      <div class="kartu"><div class="ikon">🤝</div><h3>Pendampingan Selama Konsumsi</h3><p>Tim kami siap menjawab pertanyaan Anda seputar aturan pakai dan proses konsumsi, kapan pun dibutuhkan.</p></div>
+      <div class="kartu"><div class="ikon">💵</div><h3>Bayar di Tempat (COD)</h3><p>Tidak perlu transfer di muka. Bayar saat paket sampai di tangan Anda — berlaku seluruh Indonesia.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CARA ORDER ============ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">Semudah kirim chat</span>
+    <h2 class="section-title">3 Langkah Sampai Paket Tiba di Rumah</h2>
+    <div class="order-grid">
+      <div class="order-step"><h3>Klik tombol WhatsApp</h3><p>Ceritakan kondisi keluarga Anda — usia, kondisi saat ini, obat yang sedang dikonsumsi. Konsultasi gratis, tanpa kewajiban membeli.</p></div>
+      <div class="order-step"><h3>Pilih paket &amp; alamat</h3><p>Tim kami bantu pilihkan paket yang sesuai, lalu konfirmasi alamat pengiriman dan metode bayar (transfer / COD).</p></div>
+      <div class="order-step"><h3>Paket dikirim, kami dampingi</h3><p>Pengiriman via JNE, J&amp;T, atau SiCepat ke seluruh Indonesia. Selama konsumsi, Anda bisa bertanya kapan saja.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" style="padding-top:0" id="faq">
+  <div class="wrap">
+    <span class="eyebrow">Pertanyaan yang sering ditanyakan</span>
+    <h2 class="section-title">Sebelum Anda Memutuskan</h2>
+
+    <details>
+      <summary>Apakah aman dikonsumsi bersama obat dari dokter?</summary>
+      <div class="isi">AntaPro Bharata adalah obat tradisional terdaftar BPOM. Prinsip kami tegas: <strong>jangan pernah menghentikan obat dokter</strong>. Herbal ini diposisikan sebagai pendamping. Jika pasien sedang mengonsumsi obat rutin (pengencer darah, obat tekanan darah, dll.), konsultasikan dulu dengan dokter atau apoteker mengenai jadwal dan kombinasinya — tim kami juga akan menanyakan hal ini sebelum memproses pesanan Anda.</div>
+    </details>
+
+    <details>
+      <summary>Berapa lama sampai terasa perubahan?</summary>
+      <div class="isi">Berbeda-beda untuk setiap orang — tergantung kondisi, usia, terapi yang dijalani, dan konsistensi konsumsi. Sebagian pelanggan melaporkan kemajuan kecil sejak botol pertama, sebagian lain butuh waktu lebih lama. Aturan pakainya 3× sehari 2 kapsul secara rutin, dan kami sarankan tetap menjalani terapi/fisioterapi yang dianjurkan dokter agar hasilnya optimal.</div>
+    </details>
+
+    <details>
+      <summary>Apakah produk ini legal dan halal?</summary>
+      <div class="isi">Ya. Terdaftar resmi di BPOM dengan nomor <strong>TR223041501</strong> — Anda bisa memverifikasinya sendiri di situs resmi cekbpom.pom.go.id — dan bersertifikat Halal MUI.</div>
+    </details>
+
+    <details>
+      <summary>Bagaimana cara memesan dan membayar?</summary>
+      <div class="isi">Klik tombol WhatsApp mana pun di halaman ini, ceritakan kondisi pasien, lalu tim kami bantu proses pesanan. Pembayaran bisa transfer bank atau COD (bayar saat paket tiba). Pengiriman ke seluruh Indonesia via JNE, J&amp;T, SiCepat, dan ekspedisi lainnya.</div>
+    </details>
+
+    <details>
+      <summary>Bagaimana memastikan produk yang saya terima original?</summary>
+      <div class="isi">Kami mengirim langsung dari distributor resmi. Setiap kemasan mencantumkan nomor BPOM yang bisa dicek mandiri. Jika Anda ragu dengan kondisi paket saat tiba, foto dan kirimkan ke kami — garansi kirim ulang berlaku untuk paket rusak/tidak sesuai.</div>
+    </details>
+
+    <details>
+      <summary>Apakah bisa menggantikan terapi atau kontrol dokter?</summary>
+      <div class="isi">Tidak. Dan kami tidak akan pernah menyarankan itu. Pemulihan pasca stroke terbaik adalah kombinasi: penanganan medis, fisioterapi rutin, pola makan sehat, dukungan keluarga — dan herbal sebagai pendamping ikhtiar. AntaPro Bharata mengisi peran yang terakhir.</div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ CTA AKHIR ============ -->
+<section class="akhir">
+  <div class="wrap">
+    <span class="eyebrow">Satu langkah kecil hari ini</span>
+    <h2 class="section-title">Momen "Pegang Sendok Sendiri" Itu Layak Diperjuangkan</h2>
+    <p class="section-lead" style="margin:0 auto 28px">Anda tidak harus memutuskan sekarang. Cukup ceritakan dulu kondisi keluarga Anda — tim kami akan menjawab dengan jujur apakah produk ini sesuai, atau tidak.</p>
+    <a class="btn-wa" href="https://wa.me/6282137101661?text=Halo%2C%20saya%20ingin%20konsultasi%20dulu%20tentang%20kondisi%20keluarga%20saya" rel="nofollow">💬 Mulai Konsultasi Gratis Sekarang</a>
+    <p class="btn-note">Respon cepat · Tidak dipaksa membeli · COD seluruh Indonesia</p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div><b>AntaPro Bharata</b> — Obat tradisional terdaftar BPOM TR223041501 · Halal MUI</div>
+    <div><b>Penting:</b> Produk ini adalah obat tradisional yang secara tradisional membantu memperlancar peredaran darah. Bukan pengganti obat, terapi, atau nasihat medis dari dokter. Bila keluarga Anda mengalami gejala stroke akut (wajah mencong mendadak, lengan lemah, bicara tiba-tiba pelo), segera bawa ke IGD terdekat — setiap menit berharga.</div>
+    <div>© 2026 Solusi Dokter · Layanan pelanggan: WhatsApp 0821-3710-1661</div>
+  </div>
+</footer>
+
+<!-- STICKY CTA — hanya tampil di mobile -->
+<div class="sticky-cta">
+  <div class="harga-kecil">Mulai dari<b>Rp 275.000</b></div>
+  <a class="btn-wa" href="https://wa.me/6282137101661?text=Halo%2C%20saya%20mau%20pesan%20AntaPro%20Obat%20Herbal%20Pendukung%20Pemulihan%20Stroke" rel="nofollow">💬 Pesan via WhatsApp</a>
+</div>
+
+<script>
+/* Video baru dimuat saat diklik — menjaga PageSpeed tetap hijau */
+document.querySelectorAll('.vid').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var yt=btn.dataset.yt,mp4=btn.dataset.mp4,el;
+    if(yt&&yt.indexOf('GANTI')===-1){
+      el=document.createElement('iframe');
+      el.src='https://www.youtube-nocookie.com/embed/'+yt+'?autoplay=1&rel=0';
+      el.allow='autoplay; encrypted-media; picture-in-picture';
+      el.allowFullscreen=true;
+    }else if(mp4&&mp4.indexOf('GANTI')===-1){
+      el=document.createElement('video');
+      el.src=mp4;el.controls=true;el.autoplay=true;el.playsInline=true;
+    }else{return;}
+    btn.innerHTML='';btn.appendChild(el);btn.style.cursor='default';
+  },{once:true});
+});
+</script>
+</body>
+</html>
 
